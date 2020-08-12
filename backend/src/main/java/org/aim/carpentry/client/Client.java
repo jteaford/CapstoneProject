@@ -1,4 +1,4 @@
-package org.aim.movie.actor;
+package org.aim.carpentry.client;
 
 import java.util.Date;
 import javax.persistence.Column;

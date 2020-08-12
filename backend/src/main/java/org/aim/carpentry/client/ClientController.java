@@ -1,4 +1,4 @@
-package org.aim.movie.actor;
+package org.aim.carpentry.client;
 
 import java.util.Optional;
 
@@ -14,46 +14,48 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(path = "/api/actors")
+@RequestMapping(path = "/api/clients")
 
-public class ActorController {
+public class ClientController {
     
     @Autowired
-    private ActorRepository actorRepository;
+    private ClientRepository clientRepository;
 
     @GetMapping(path = "")
-    public @ResponseBody Iterable<Actor> getAllActors() {
-        return actorRepository.findAll();
+    public @ResponseBody Iterable<Actor> getAllClients() {
+        return clientRepository.findAll();
     }
 
     @GetMapping(path = "/{id}")
-    public @ResponseBody Actor getActor(@PathVariable (value = "id") Integer id) {
-        Optional<Actor> actor = actorRepository.findById(id);
-        return actor.get();
+    public @ResponseBody Actor getClient(@PathVariable (value = "id") Integer id) {
+        Optional<Actor> actor = clientRepository.findById(id);
+        return client.get();
     }
 
     @PostMapping(path = "/")
-    public @ResponseBody String createActor(@RequestBody Actor actor) {
-        actorRepository.save(actor);
+    public @ResponseBody String createClient(@RequestBody Client client) {
+        clientRepository.save(client);
         return "Saved";
     }
 
     @PutMapping(path = "/{id}")
-    public @ResponseBody String updateActor(@PathVariable(value = "id") Integer id, @RequestBody Actor actorDetails) {
-        Optional<Actor> optionalActor = actorRepository.findById(id);
-        Actor actor = optionalActor.get();
+    public @ResponseBody String updateClient(@PathVariable(value = "id") Integer id, @RequestBody Client clientDetails) {
+        Optional<Client> optionalClient = clientRepository.findById(id);
+        Client client = optionalClient.get();
 
-        actor.setFirstName(actorDetails.getFirstName());
-        actor.setLastName(actorDetails.getLastName());
-        actor.setDateOfBirth(actorDetails.getDateOfBirth());
-        actorRepository.save(actor);
+        client.setClientCode(clientDetails.getClientCode());
+        client.setFirstName(clientDetails.getFirstName());
+        client.setLastName(clientDetails.getLastName());
+        client.setEmailAddress(clientDetails.getClientEmailAddress());
+        client.setPhoneNumber(clientDetails.getClientDetails());
+        clientRepository.save(actor);
 
         return "Updated";
     }
 
     @DeleteMapping(path = "/{id}")
-    public @ResponseBody String deleteActor(@PathVariable(value = "id") Integer id) {
-        actorRepository.deleteById(id);
+    public @ResponseBody String deleteClient(@PathVariable(value = "id") Integer id) {
+        clientRepository.deleteById(id);
         return "Deleted";
     }
 

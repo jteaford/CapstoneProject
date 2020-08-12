@@ -1,7 +1,7 @@
-package org.aim.movie.actor;
+package org.aim.carpentry.client;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface ActorRepository extends CrudRepository<Actor, Integer>{
+public interface ClientRepository extends CrudRepository<Client, Integer>{
     
 }

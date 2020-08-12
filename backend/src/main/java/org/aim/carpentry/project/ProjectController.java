@@ -1,4 +1,4 @@
-package org.aim.movie.movie;
+package org.aim.carpentry.project;
 
 import java.util.Optional;
 
@@ -14,40 +14,42 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/api/movies")
+@RequestMapping(path = "/api/projects")
 
-public class MovieController {
+public class ProjectController {
     
     @Autowired
-    private MovieRepository movieRepository;
+    private ProjectRepository projectRepository;
 
     @GetMapping(path = "")
-    public @ResponseBody Iterable<Movie> getAllMovies() {
-        return movieRepository.findAll();
+    public @ResponseBody Iterable<Project> getAllProjects() {
+        return projectRepository.findAll();
     }
 
     @GetMapping(path = "/{id}")
-    public @ResponseBody Movie getMovie(@PathVariable (value = "id") Integer id) {
-        Optional<Movie> movie = movieRepository.findById(id);
-        return movie.get();
+    public @ResponseBody Project getProject(@PathVariable (value = "id") Integer id) {
+        Optional<Project> project = projectRepository.findById(id);
+        return project.get();
     }
 
     @PutMapping(path = "/{id}")
-    public @ResponseBody String updateMovie(@PathVariable(value = "id") Integer id, @RequestBody Movie movieDetails) {
-        Optional<Movie> optionalMovie = movieRepository.findById(id);
-        Movie movie = optionalMovie.get();
+    public @ResponseBody String updateProject(@PathVariable(value = "id") Integer id, @RequestBody Project projectDetails) {
+        Optional<Project> optionalProject = projectRepository.findById(id);
+        Project project = optionalProject.get();
 
-        movie.setMovieTitle(movieDetails.getMovieTitle());
-        movie.setMovieLength(movieDetails.getMovieLength());
-        movie.setReleaseDate(movieDetails.getReleaseDate());
-        movieRepository.save(movie);
+        project.setProjectCode(projectDetails.getProjectDetails());
+        project.setProjectDescription(projectDetails.getProjectDetails());
+        project.setStatusId(projectDetails.getProjectDetails());
+        project.setClientId(projectDetails.getProjectDetails());
+        project.setClientProjectNumber(projectDetails.getProjectDetails());
+        projectRepository.save(movie);
 
         return "Updated";
     }
 
     @DeleteMapping(path = "/{id}")
-    public @ResponseBody String deleteMovie(@PathVariable(value = "id") Integer id) {
-        movieRepository.deleteById(id);
+    public @ResponseBody String deleteProject(@PathVariable(value = "id") Integer id) {
+        projectRepository.deleteById(id);
         return "Deleted";
     }
 

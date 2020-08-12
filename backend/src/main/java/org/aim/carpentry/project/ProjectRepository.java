@@ -1,7 +1,7 @@
-package org.aim.movie.movie;
+package org.aim.carpentry.project;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface MovieRepository extends CrudRepository<Movie, Integer>{
+public interface ProjectRepository extends CrudRepository<Project, Integer>{
     
 }

@@ -21,7 +21,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "projects")
-public class Project {
+public class Projects {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

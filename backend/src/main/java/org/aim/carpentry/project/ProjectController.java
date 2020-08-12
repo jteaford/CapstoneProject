@@ -42,7 +42,7 @@ public class ProjectController {
         project.setStatusId(projectDetails.getProjectDetails());
         project.setClientId(projectDetails.getProjectDetails());
         project.setClientProjectNumber(projectDetails.getProjectDetails());
-        projectRepository.save(movie);
+        projectRepository.save(project);
 
         return "Updated";
     }
@@ -55,8 +55,8 @@ public class ProjectController {
 
 
     @PostMapping(path = "/")
-    public Movie createMovie(@RequestBody Movie movie){
-        return movieRepository.save(movie);
+    public Project createProject(@RequestBody Project project){
+        return projectRepository.save(project);
     }
 
     }

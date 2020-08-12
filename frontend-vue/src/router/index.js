@@ -8,22 +8,22 @@ Vue.use(VueRouter)
   {path: '/', name: 'Home', component: Home},
 
   {
-    path: '/actor',
-    name: 'Actor',
-    component: () => import('../views/AddActor.vue')
+    path: '/client',
+    name: 'Client',
+    component: () => import('../views/AddClient.vue')
   },
 
-  { path: '/actors',
-    name: 'Actors',
+  { path: '/clients',
+    name: 'Clients',
     // route level code-splitting
     // this generates a separate chunk (actors.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "actors" */ '../views/Actors.vue')},
 
-  {path: '/actor/:id', name:'ActorDetail', component: () => import('../views/ActorDetail.vue')},
-  {path: '/movies', name: 'Movies', component: () => import('../views/Movies.vue')},
-  {path: '/movie/add', name: 'AddMovie', component: () => import('../views/AddMovie.vue')},
-  {path: '/movie/:id', name: 'Movie', component: () => import('../views/MovieDetail.vue')}
+  {path: '/client/:id', name:'ClientDetail', component: () => import('../views/ClientDetail.vue')},
+  {path: '/projects', name: 'Projects', component: () => import('../views/Projects.vue')},
+  {path: '/project/add', name: 'AddProject', component: () => import('../views/AddProject.vue')},
+  {path: '/project/:id', name: 'Project', component: () => import('../views/ProjectDetail.vue')}
   
 ]
 

@@ -11,12 +11,12 @@
 	</parent>
 
     <groupId>org.aim</groupId>
-	<artifactId>movie</artifactId>
+	<artifactId>carpentry</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>movie</name>
-	<description>Movie Project Using Spring Boot</description>
+    <name>carpentry</name>
+	<description>Carpentry Project Using Spring Boot</description>
 
 	<properties>
 		<java.version>11</java.version>

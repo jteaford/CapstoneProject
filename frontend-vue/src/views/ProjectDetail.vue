@@ -16,7 +16,7 @@ export default {
     }),
     async mounted() {
         const { data } = await this.$http.get('http://localhost:8080/api/projects/' + this.$route.params.id);
-        this.movie = data;
+        this.project = data;
     }
 }
 </script>

@@ -1,10 +1,10 @@
 <template>
   <div id="main">
     <div class="header">
-      <h1 class="title">Movies</h1>
+      <h1 class="title">Projects</h1>
     </div>
 
-    <router-link to="/movie/add" tag="button" class="button is-primary">Add Movie</router-link>
+    <router-link to="/project/add" tag="button" class="button is-primary">Add Project</router-link>
 
     <div class="content">
 
@@ -13,18 +13,19 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Movie Title</th>
-            <th>Movie Length</th>
-            <th>Release Date</th>
+            <th>Project Code</th>
+            <th>Project Description</th>
+            <th>Status</th>
+            <th>Client Name</th>
           </tr>
         </thead>
 
         <tbody>
-            <tr v-for="movie in movies" :key="movie.id">
-              <td>{{ movie.id }}</td>
-              <td><a @click="movieDetail(movie.id)">{{ movie.movieTitle }}</a></td>
-              <td>{{ movie.movieLength }}</td>
-              <td>{{ movie.releaseDate }}</td>
+            <tr v-for="project in projects" :key="project.id">
+              <td>{{ project.id }}</td>
+              <td><a @click="projectDetail(project.id)">{{ project.projectCode }}</a></td>
+              <td>{{ client.clientStatus }}</td>
+              <td>{{ client.firstName }} {{ client.lastName }}</td>
             </tr>
         </tbody>
 
@@ -36,20 +37,20 @@
 
 <script>
 export default {
-    name: 'Movies',
+    name: 'Projects',
     data: () => ({ 
-      movies: [] 
+      projects: [] 
     }),
     methods: {
-      movieDetail(movieId) {
-          this.$router.push('movie/' + movieId);
+      projectDetail(projectId) {
+          this.$router.push('project/' + projectId);
       }
     },
         async mounted() {
-            console.log('movies mounted begin');
-            const { data } = await this.$http.get('http://localhost:8080/api/movies');
-            console.log('movies mounted data', data);
-            this.movies = data;
+            console.log('projects mounted begin');
+            const { data } = await this.$http.get('http://localhost:8080/api/projects');
+            console.log('projects mounted data', data);
+            this.projects = data;
         },
 }
 </script>

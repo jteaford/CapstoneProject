@@ -1,25 +1,39 @@
 <template>
     <div>
-        <h1 class="title">Add Actor</h1>
+        <h1 class="title">Add Client</h1>
+
+        <div class="field"> 
+            <label class="label">Client Code</label>
+            <div class="control">
+                <input class="input" type="text" v-model="client.clientCode" placeholder="Enter Initials of Client" />
+            </div> 
+        </div>
 
         <div class="field"> 
             <label class="label">First Name</label>
             <div class="control">
-                <input class="input" type="text" v-model="actor.firstName" placeholder="First Name" />
+                <input class="input" type="text" v-model="client.firstName" placeholder="First Name" />
             </div> 
         </div>
 
         <div class="field"> 
             <label class="label">Last Name</label>
             <div class="control">
-                <input class="input" type="text" v-model="actor.lastName" placeholder="Last Name" />
+                <input class="input" type="text" v-model="client.lastName" placeholder="Last Name" />
             </div> 
         </div>
 
         <div class="field"> 
-            <label class="label">Date of Birth</label>
+            <label class="label">Email Address</label>
             <div class="control">
-                <input class="input" type="date" v-model="actor.dateOfBirth" placeholder="Date of Birth" />
+                <input class="input" type="text" v-model="client.emailAddress" placeholder="Email Address" />
+            </div> 
+        </div>
+
+        <div class="field"> 
+            <label class="label">Phone Number</label>
+            <div class="control">
+                <input class="input" type="text" v-model="client.phoneNumber" placeholder="Phone Number" />
             </div> 
         </div>
    
@@ -36,24 +50,26 @@
 
 <script>
 export default {
-    name: 'AddActor',
+    name: 'AddClient',
     data: () => ({
-        actor: {
+        client: {
+            clientCode: "",
             firstName: "",
             lastName: "",
-            dateOfBirth: ""
+            emailAddress: "",
+            phoneNumber: ""
         }
     }),
 
     methods: {
         cancel() {
-            this.$router.push({path: '/actors'});
+            this.$router.push({path: '/clients'});
         },
         async save() {
-            const response = await this.$http.post('http://localhost:8080/api/actors/', this.actor)
+            const response = await this.$http.post('http://localhost:8080/api/clients/', this.clients)
             console.log(response);
             if (response.status === 200) {
-                this.$router.push({path: '/actors'});
+                this.$router.push({path: '/clients'});
             }
         }
     }

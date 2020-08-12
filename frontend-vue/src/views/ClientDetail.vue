@@ -9,7 +9,7 @@
             <li>{{ client.phoneNumber }}</li>
         </ul>
 
-        <router-link :to="{ name: 'AddProject', params: actor}" tag="button" class="button is-primary">Add Project</router-link>
+        <router-link :to="{ name: 'AddProject', params: client}" tag="button" class="button is-primary">Add Project</router-link>
     
     </div>
 </template>
@@ -17,11 +17,11 @@
 <script>
 export default {
     data: () => ({
-        actor: null
+        client: null
     }),
     async mounted() {
         const { data } = await this.$http.get('http://localhost:8080/api/projects/' + this.$route.params.id);
-        this.actor = data;
+        this.client = data;
     }
 }
 </script>

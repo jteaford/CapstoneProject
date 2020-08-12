@@ -17,6 +17,7 @@ public class Status {
     @Column(name = "status_id")
     private Integer id;
 
+    @Column(name = "project_status")
     private String status;
 
     public Integer getId() {

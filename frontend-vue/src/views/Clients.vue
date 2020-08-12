@@ -1,26 +1,30 @@
 <template>
   <div id="main">
     <div class="header">
-      <h1 class="title">Actors</h1>
+      <h1 class="title">Clients</h1>
     </div>
 
-    <router-link to="/actor" tag="button" class="button is-primary">Add Actor</router-link>
+    <router-link to="/client" tag="button" class="button is-primary">Add Client</router-link>
 
     <div class="content">
 
-      <table id="actors" class="table">
+      <table id="clients" class="table">
         <thead>
           <tr>
             <th>#</th>
+            <th>Client Code</th>
             <th>Name</th>
-            <th>Date of Birth</th>
+            <th>Email Address</th>
+            <th>Phone Number</th>
           </tr>
         </thead>
         <tbody>
-            <tr v-for="actor in actors" :key="actor.id">
-              <td>{{ actor.id }}</td>
-              <td><a @click="actorDetail(actor.id)">{{ actor.firstName }} {{ actor.lastName }}</a></td>
-              <td>{{ moment(actor.dateOfBirth).format('MM/DD/YYYY') }}</td>
+            <tr v-for="client in clients" :key="client.id">
+              <td>{{ client.id }}</td>
+              <td>{{ client.clientCode }}</td>
+              <td><a @click="clientDetail(client.id)">{{ client.firstName }} {{ client.lastName }}</a></td>
+              <td>{{ client.emailAddress }}</td>
+              <td>{{ client.phoneNumber }}</td>
             </tr>
         </tbody>
       </table>

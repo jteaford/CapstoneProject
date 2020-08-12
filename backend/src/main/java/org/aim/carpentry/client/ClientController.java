@@ -22,13 +22,13 @@ public class ClientController {
     private ClientRepository clientRepository;
 
     @GetMapping(path = "")
-    public @ResponseBody Iterable<Actor> getAllClients() {
+    public @ResponseBody Iterable<Client> getAllClients() {
         return clientRepository.findAll();
     }
 
     @GetMapping(path = "/{id}")
-    public @ResponseBody Actor getClient(@PathVariable (value = "id") Integer id) {
-        Optional<Actor> actor = clientRepository.findById(id);
+    public @ResponseBody Client getClient(@PathVariable (value = "id") Integer id) {
+        Optional<Client> client = clientRepository.findById(id);
         return client.get();
     }
 
@@ -48,7 +48,7 @@ public class ClientController {
         client.setLastName(clientDetails.getLastName());
         client.setEmailAddress(clientDetails.getClientEmailAddress());
         client.setPhoneNumber(clientDetails.getClientDetails());
-        clientRepository.save(actor);
+        clientRepository.save(client);
 
         return "Updated";
     }

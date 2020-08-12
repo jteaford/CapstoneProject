@@ -16,9 +16,9 @@ Vue.use(VueRouter)
   { path: '/clients',
     name: 'Clients',
     // route level code-splitting
-    // this generates a separate chunk (actors.[hash].js) for this route
+    // this generates a separate chunk (clients.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "actors" */ '../views/Actors.vue')},
+    component: () => import(/* webpackChunkName: "clients" */ '../views/Clients.vue')},
 
   {path: '/client/:id', name:'ClientDetail', component: () => import('../views/ClientDetail.vue')},
   {path: '/projects', name: 'Projects', component: () => import('../views/Projects.vue')},

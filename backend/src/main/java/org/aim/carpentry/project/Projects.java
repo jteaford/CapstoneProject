@@ -43,6 +43,54 @@ public class Projects {
     @Column(name = "client_project_number")
     private Integer clientProjectNumber;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getProjectCode() {
+        return projectCode;
+    }
+
+    public void setProjectCode(String projectCode) {
+        this.projectCode = projectCode;
+    }
+
+    public String getProjectDescription() {
+        return projectDescription;
+    }
+
+    public void setProjectDescription(String projectDescription) {
+        this.projectDescription = projectDescription;
+    }
+
+    public Integer getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(Integer statusId) {
+        this.statusId = statusId;
+    }
+
+    public Integer getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Integer clientId) {
+        this.clientId = clientId;
+    }
+
+    public Integer getClientProjectNumber() {
+        return clientProjectNumber;
+    }
+
+    public void setClientProjectNumber(Integer clientProjectNumber) {
+        this.clientProjectNumber = clientProjectNumber;
+    }
+
 
     
 }

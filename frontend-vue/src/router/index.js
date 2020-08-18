@@ -23,7 +23,9 @@ Vue.use(VueRouter)
   {path: '/client/:id', name:'ClientDetail', component: () => import('../views/ClientDetail.vue')},
   {path: '/projects', name: 'Projects', component: () => import('../views/Projects.vue')},
   {path: '/project/add', name: 'AddProject', component: () => import('../views/AddProject.vue')},
-  {path: '/project/:id', name: 'Project', component: () => import('../views/ProjectDetail.vue')}
+  {path: '/project/:id', name: 'Project', component: () => import('../views/ProjectDetail.vue')},
+
+  {path: '/expenses', name:'Expenses', component: () => import('../views/Expenses.vue')}
   
 ]
 

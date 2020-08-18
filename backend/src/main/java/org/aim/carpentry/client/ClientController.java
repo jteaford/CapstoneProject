@@ -46,8 +46,8 @@ public class ClientController {
         client.setClientCode(clientDetails.getClientCode());
         client.setFirstName(clientDetails.getFirstName());
         client.setLastName(clientDetails.getLastName());
-        client.setEmailAddress(clientDetails.getClientEmailAddress());
-        client.setPhoneNumber(clientDetails.getClientDetails());
+        client.setEmailAddress(clientDetails.getEmailAddress());
+        client.setPhoneNumber(clientDetails.getPhoneNumber());
         clientRepository.save(client);
 
         return "Updated";

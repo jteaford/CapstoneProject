@@ -1,4 +1,4 @@
-package org.aim.movie;
+package org.aim.carpentry;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

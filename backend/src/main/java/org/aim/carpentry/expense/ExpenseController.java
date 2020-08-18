@@ -22,33 +22,34 @@ public class ExpenseController {
     private ExpenseRepository expenseRepository;
 
     @GetMapping(path = "")
-    public @ResponseBody Iterable<Client> getAllExpenses() {
+    public @ResponseBody Iterable<Expense> getAllExpenses() {
         return expenseRepository.findAll();
     }
 
     @GetMapping(path = "/{id}")
-    public @ResponseBody Client getExpense(@PathVariable (value = "id") Integer id) {
-        Optional<Client> client = expenseRepository.findById(id);
+    public @ResponseBody Expense getExpense(@PathVariable (value = "id") Integer id) {
+        Optional<Expense> expense = expenseRepository.findById(id);
         return expense.get();
     }
 
     @PostMapping(path = "/")
     public @ResponseBody String createExpense(@RequestBody Expense expense) {
-        expenseRepository.save(client);
+        expenseRepository.save(expense);
         return "Saved";
     }
 
     @PutMapping(path = "/{id}")
-    public @ResponseBody String updateExpense(@PathVariable(value = "id") Integer id, @RequestBody Expense clientDetails) {
+    public @ResponseBody String updateExpense(@PathVariable(value = "id") Integer id, @RequestBody Expense expenseDetails) {
         Optional<Expense> optionalExpense = expenseRepository.findById(id);
         Expense expense = optionalExpense.get();
 
-        client.setClientCode(clientDetails.getClientCode());
-        client.setFirstName(clientDetails.getFirstName());
-        client.setLastName(clientDetails.getLastName());
-        client.setEmailAddress(clientDetails.getClientEmailAddress());
-        client.setPhoneNumber(clientDetails.getClientDetails());
-        clientRepository.save(client);
+        expense.setTransactionDate(expenseDetails.getTransactionDate());
+        expense.setTransactionDesc(expenseDetails.getTransactionDesc());
+        expense.setLocationId(expenseDetails.getLocationId());
+        expense.setTransactionAmount(expenseDetails.getTransactionAmount());
+        expense.setExpenseId(expenseDetails.getExpenseId());
+        expense.setProjectId(expenseDetails.getProjectId());
+        expenseRepository.save(expense);
 
         return "Updated";
     }
@@ -58,3 +59,4 @@ public class ExpenseController {
         expenseRepository.deleteById(id);
         return "Deleted";
     }
+}

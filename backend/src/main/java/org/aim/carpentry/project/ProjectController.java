@@ -37,11 +37,11 @@ public class ProjectController {
         Optional<Project> optionalProject = projectRepository.findById(id);
         Project project = optionalProject.get();
 
-        project.setProjectCode(projectDetails.getProjectDetails());
-        project.setProjectDescription(projectDetails.getProjectDetails());
-        project.setStatusId(projectDetails.getProjectDetails());
-        project.setClientId(projectDetails.getProjectDetails());
-        project.setClientProjectNumber(projectDetails.getProjectDetails());
+        project.setProjectCode(projectDetails.getProjectCode());
+        project.setProjectDescription(projectDetails.getProjectDescription());
+        project.setStatusId(projectDetails.getStatusId());
+        project.setClientId(projectDetails.getClientId());
+        project.setClientProjectNumber(projectDetails.getClientProjectNumber());
         projectRepository.save(project);
 
         return "Updated";

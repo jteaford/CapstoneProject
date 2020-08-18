@@ -5,7 +5,7 @@
       <router-link to="/ledger">Business Ledger</router-link>
       <router-link to="/clients">Clients</router-link> 
       <router-link to="/projects">Projects</router-link>
-      <router-link to="/expenses">Expense</router-link>
+      <router-link to="/expenses">Expenses</router-link>
       <router-link to="/revenue">Revenue</router-link>
       <router-link to="/wood">Wood Inventory</router-link>
       <router-link to="/timeclock">Time Clock</router-link>

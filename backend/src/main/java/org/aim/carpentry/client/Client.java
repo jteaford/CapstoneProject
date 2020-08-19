@@ -19,8 +19,6 @@ public class Client {
     @Column(name="client_code")
     private String clientCode;
 
-    private Client client;
-
     @Column(name="client_first_name")
     private String firstName;
 

@@ -17,15 +17,31 @@
     <div class="navbar-start">
       <router-link class="navbar-item" to="/">Home</router-link>
 
-      <router-link class="navbar-item" to="/ledger">Business Ledger</router-link>
-
       <router-link class="navbar-item" to="/clients">Clients</router-link> 
 
-      <router-link class="navbar-item" to="/projects">Projects</router-link>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <router-link class="navbar-link" to="/projects">Projects</router-link>
+          <div class="navbar-dropdown">
 
-      <router-link class="navbar-item" to="/expenses">Expenses</router-link>
+          <!-- Generated list of projects -->
+          <router-link class="navbar-item" to="/projects">Project 1</router-link>
+          <router-link class="navbar-item" to="/projects">Project 2</router-link>
 
-      <router-link class="navbar-item" to="/revenues">Revenues</router-link>
+          <router-link class="navbar-item" to="/archive">Archive</router-link>
+            
+          </div>
+      </div>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+      <router-link class="navbar-link" to="/ledger">Business Ledger</router-link>
+
+      <div class="navbar-dropdown">
+          <router-link class="navbar-item" to="/expenses">Expenses</router-link>
+
+          <router-link class="navbar-item" to="/revenues">Revenues</router-link>
+          
+        </div>
+      </div>
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
@@ -72,35 +88,19 @@ export default {
   color: #2c3e50;
 }
 
-#nav {
-  
-  display: flex;
-  background-color: black; 
-  margin-bottom: 10vh;
-}
-
-#nav a, i{
-  font-weight: lighter;
-  color: white;
-  padding-right: 3vw;
-}
-
-#nav a.router-link-exact-active {
-  color: #666666;
-}
-
-#nav-icons {
-  display: flex;
-  justify-content: flex-end;
-}
-
 nav.navbar {
   background-color: black;
   padding: 30px 30px 30px 50px;
   margin-bottom: 50px;
 }
 
+.navbar-item, .navbar-link {
+  color: #666666;
+}
 
+.navbar-item img {
+max-height: 3rem;
+}
 
 a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, .navbar-link.is-active {
     background-color: black;

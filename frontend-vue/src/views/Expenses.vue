@@ -21,12 +21,12 @@
           </tr>
         </thead>
         <tbody>
-            <tr v-for="client in clients" :key="client.id">
+            <tr v-for="expense in expenses" :key="expense.id">
               <td>{{ expense.id }}</td>
               <td>{{ expense.transactionDate }}</td>
               <td>{{ expense.transactionDesc }}</td>
               <td>{{ expense.locationId }}</td>
-              <td>{{ expense.transactionAmount }}</td>
+              <td>{{ expense.transactionAmount | toCurrency }}</td>
               <td>{{ expense.expenseId }}</td>
               <td>{{ expense.projectId }}</td>
             </tr>
@@ -44,10 +44,10 @@ export default {
       expenses: [] 
     }),
         async mounted() {
-            console.log('actors mounted begin');
-            const { data } = await this.$http.get('http://localhost:8080/api/expenses/');
-            console.log('actors mounted data', data);
-            this.actors = data;
+            console.log('expenses mounted begin');
+            const { data } = await this.$http.get('http://localhost:8080/api/expenses');
+            console.log('expenses mounted data', data);
+            this.expenses = data;
         },
     methods: {
       expenseDetail(expenseId) {

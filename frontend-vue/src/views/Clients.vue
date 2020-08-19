@@ -35,19 +35,19 @@
 
 <script>
 export default {
-    name: 'Actors',
+    name: 'Clients',
     data: () => ({ 
-      actors: [] 
+      clients: [] 
     }),
         async mounted() {
-            console.log('actors mounted begin');
-            const { data } = await this.$http.get('http://localhost:8080/api/actors/');
-            console.log('actors mounted data', data);
-            this.actors = data;
+            console.log('clients mounted begin');
+            const { data } = await this.$http.get('http://localhost:8080/api/clients/');
+            console.log('clients mounted data', data);
+            this.clients = data;
         },
     methods: {
-      actorDetail(actorId) {
-          this.$router.push('actor/' + actorId);
+      clientDetail(clientId) {
+          this.$router.push('client/' + clientId);
       }
     },
 }

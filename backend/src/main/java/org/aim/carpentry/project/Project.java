@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.aim.carpentry.status.Status;
 
 @Entity
 @Table(name = "projects")
@@ -22,8 +26,9 @@ public class Project {
     @Column(name = "project_desc")
     private String projectDescription;
 
-    @Column(name = "status_id")
-    private Integer statusId;
+    @ManyToOne
+    @JoinColumn(name = "status_id", nullable = false)
+    private Status status;
 
     @Column(name = "client_id")
     private Integer clientId;
@@ -55,12 +60,12 @@ public class Project {
         this.projectDescription = projectDescription;
     }
 
-    public Integer getStatusId() {
-        return statusId;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setStatusId(Integer statusId) {
-        this.statusId = statusId;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public Integer getClientId() {

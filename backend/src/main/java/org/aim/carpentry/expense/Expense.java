@@ -1,5 +1,6 @@
 package org.aim.carpentry.expense;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +17,7 @@ public class Expense {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name= "client_id")
+    @Column(name= "transaction_id")
     private Integer id;
 
     @Column(name="date_of_transaction")
@@ -28,9 +29,9 @@ public class Expense {
 
     @Column(name="location_id")
     private Integer locationId;
-
     @Column(name="transaction_amount")
-    private Integer transactionAmount;
+
+    private BigDecimal transactionAmount;
 
     @Column(name="expense_id")
     private Integer expenseId;
@@ -70,11 +71,11 @@ public class Expense {
         this.locationId = locationId;
     }
 
-    public Integer getTransactionAmount() {
+    public BigDecimal getTransactionAmount() {
         return transactionAmount;
     }
 
-    public void setTransactionAmount(Integer transactionAmount) {
+    public void setTransactionAmount(BigDecimal transactionAmount) {
         this.transactionAmount = transactionAmount;
     }
 

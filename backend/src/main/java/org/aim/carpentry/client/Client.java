@@ -29,7 +29,7 @@ public class Client {
     private String emailAddress;
 
     @Column(name="client_phone_number")
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     public Integer getId() {
         return id;
@@ -71,11 +71,11 @@ public class Client {
         this.emailAddress = emailAddress;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

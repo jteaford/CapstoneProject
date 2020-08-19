@@ -16,16 +16,19 @@
             <th>Project Code</th>
             <th>Project Description</th>
             <th>Status</th>
-            <th>Client Name</th>
+            <th>Client</th>
+            <th>Project Number</th>
           </tr>
         </thead>
 
         <tbody>
             <tr v-for="project in projects" :key="project.id">
               <td>{{ project.id }}</td>
-              <td><a @click="projectDetail(project.id)">{{ project.projectCode }}</a></td>
-              <td>{{ client.clientStatus }}</td>
-              <td>{{ client.firstName }} {{ client.lastName }}</td>
+              <td>{{ project.projectCode }}</td>
+              <td>{{ project.projectDescription }}</td>
+              <td>{{ project.status.status }}</td>
+              <td>{{ project.clientId }}</td>
+              <td>{{ project.clientProjectNumber }}</td>
             </tr>
         </tbody>
 

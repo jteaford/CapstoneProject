@@ -39,7 +39,6 @@ public class Client {
     @JoinColumn(name = "referral_id", nullable = false)
     private Referral referral;
 
-
     public Integer getId() {
         return id;
     }

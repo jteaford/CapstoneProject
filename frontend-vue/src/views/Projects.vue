@@ -68,12 +68,12 @@ export default {
   }
 
   .button.is-primary {
-    background-color: #777777;
+    background-color: black;
     margin-bottom: 50px;
   }
 
   .button.is-primary:hover {
-    background-color: #999999;
+    background-color: #666666;
   }
 
   .table {

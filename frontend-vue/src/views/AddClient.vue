@@ -33,14 +33,14 @@
         <div class="field"> 
             <label class="label">Phone Number</label>
             <div class="control">
-                <input class="input" type="text" v-model="client.phoneNumber" placeholder="Phone Number" />
+                <input class="input" type="text" v-model="client.phoneNumber"/>
             </div> 
         </div>
 
         <div class="field">
             <label class="label">Referral Type</label>
             <div class="select">
-                <select v-model="client.referral">
+                <select v-model="client.referral.id" placeholder="Select Referral Type">
                     <option v-for="referral in referrals" :value="referral.id" :key="referral.id">
                         {{ referral.referral }}
                     </option>
@@ -73,7 +73,6 @@ export default {
         },
         referrals: []
     }),
-
     methods: {
         cancel() {
             this.$router.push({path: '/clients'});
@@ -91,18 +90,28 @@ export default {
             return data;
         },
         async mounted() {
-        this.statuses = await this.getReferrals();
-    }
-    }
+        this.referrals = await this.getReferrals();
+        }
+}
 }
 </script>
 <style scoped>
 button {
     margin-top: 20px;
+    margin-bottom: 100px;
 }
 
 button.is-primary {
     background-color: black;
     margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+button.is-primary:hover {
+    background-color: #666666;
+}
+
+.input, .textarea {
+    width: 50%;
 }
 </style>

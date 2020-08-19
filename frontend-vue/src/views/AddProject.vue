@@ -90,7 +90,7 @@ export default {
     button{
         margin-top: 10px;
     }
-    
+
     button.is-primary{
         background-color: black;
         margin-top: 10px;
@@ -99,4 +99,8 @@ export default {
     button.is-primary:hover{
         background-color: #666666;
     }
+    
+    .input, .textarea {
+    width: 50%;
+}
 </style>

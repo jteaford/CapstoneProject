@@ -65,4 +65,13 @@ export default {
   .content table th:not([align]) {
     text-align: left;
   }
+
+  .button.is-primary {
+    background-color: black;
+    margin-bottom: 50px;
+  }
+
+  .button.is-primary:hover {
+    background-color: #666666;
+  }
 </style>

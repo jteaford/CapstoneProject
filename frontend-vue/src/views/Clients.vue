@@ -16,6 +16,7 @@
             <th>Name</th>
             <th>Email Address</th>
             <th>Phone Number</th>
+            <th>Referral Type </th>
           </tr>
         </thead>
         <tbody>
@@ -24,7 +25,8 @@
               <td>{{ client.clientCode }}</td>
               <td><a @click="clientDetail(client.id)">{{ client.firstName }} {{ client.lastName }}</a></td>
               <td>{{ client.emailAddress }}</td>
-              <td>{{ client.phoneNumber }}</td>
+              <td>{{ client.phoneNumber | phone }}</td>
+              <td>{{ client.referral.referral }}</td>
             </tr>
         </tbody>
       </table>
@@ -60,6 +62,19 @@ export default {
 
   .content table th:not([align]) {
     text-align: left;
+  }
+
+  .table {
+    margin-bottom: 100px;
+  }
+
+  .button.is-primary {
+    background-color: black;
+    margin-bottom: 50px;
+  }
+
+  .button.is-primary:hover {
+    background-color: #666666;
   }
 
   .table {

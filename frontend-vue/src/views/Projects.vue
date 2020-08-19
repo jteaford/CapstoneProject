@@ -27,7 +27,7 @@
               <td>{{ project.projectCode }}</td>
               <td>{{ project.projectDescription }}</td>
               <td>{{ project.status.status }}</td>
-              <td>{{ project.clientId }}</td>
+              <td>{{ client.firstName }} {{ client.lastName }}</td>
               <td>{{ project.clientProjectNumber }}</td>
             </tr>
         </tbody>

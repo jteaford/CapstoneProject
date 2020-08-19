@@ -19,6 +19,8 @@ public class Client {
     @Column(name="client_code")
     private String clientCode;
 
+    private Client client;
+
     @Column(name="client_first_name")
     private String firstName;
 
@@ -77,6 +79,14 @@ public class Client {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     

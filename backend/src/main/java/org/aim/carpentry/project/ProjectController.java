@@ -40,7 +40,7 @@ public class ProjectController {
         project.setProjectCode(projectDetails.getProjectCode());
         project.setProjectDescription(projectDetails.getProjectDescription());
         project.setStatus(projectDetails.getStatus());
-        project.setClientId(projectDetails.getClientId());
+        project.setClient(projectDetails.getClient());
         project.setClientProjectNumber(projectDetails.getClientProjectNumber());
         projectRepository.save(project);
 

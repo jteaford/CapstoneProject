@@ -47,8 +47,8 @@ public class ExpenseController {
         expense.setTransactionDesc(expenseDetails.getTransactionDesc());
         expense.setLocation(expenseDetails.getLocation());
         expense.setTransactionAmount(expenseDetails.getTransactionAmount());
-        expense.setExpense(expenseDetails.getExpense());
-        expense.setProjectId(expenseDetails.getProjectId());
+        expense.setExpenseId(expenseDetails.getExpenseId());
+        expense.setProject(expenseDetails.getProject());
         expenseRepository.save(expense);
 
         return "Updated";

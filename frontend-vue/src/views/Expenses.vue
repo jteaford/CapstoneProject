@@ -17,7 +17,7 @@
             <th>Location</th>
             <th>Amount</th>
             <th>Expense Type</th>
-            <th>Project ID</th>
+            <th>Project Code</th>
           </tr>
         </thead>
         <tbody>
@@ -25,10 +25,10 @@
               <td>{{ expense.id }}</td>
               <td>{{ expense.transactionDate }}</td>
               <td>{{ expense.transactionDesc }}</td>
-              <td>{{ expense.locationName }} {{ expense.addressDesc }}</td>
+              <td>{{ expense.location.locationName }} {{ expense.location.addressDesc }}</td>
               <td>{{ expense.transactionAmount | toCurrency }}</td>
-              <td>{{ expense.expense }}</td>
-              <td>{{ expense.projectId }}</td>
+              <td>{{ expense.expenseId }}</td>
+              <td>{{ expense.project }}</td>
             </tr>
         </tbody>
       </table>
@@ -43,17 +43,17 @@ export default {
     data: () => ({ 
       expenses: [] 
     }),
+    methods: {
+      expenseDetail(expenseId) {
+          this.$router.push('expenses/' + expenseId);
+      }
+    },
         async mounted() {
             console.log('expenses mounted begin');
             const { data } = await this.$http.get('http://localhost:8080/api/expenses');
             console.log('expenses mounted data', data);
             this.expenses = data;
-        },
-    methods: {
-      expenseDetail(expense) {
-          this.$router.push('expense/' + expense);
-      }
-    },
+        }
 }
 </script>
 

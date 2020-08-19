@@ -54,7 +54,7 @@ export default {
             const { data } = await this.$http.get('http://localhost:8080/api/projects');
             console.log('projects mounted data', data);
             this.projects = data;
-        },
+        }
 }
 </script>
 

@@ -1,0 +1,77 @@
+<template>
+  <div id="main">
+    <div class="header">
+      <h1 class="title">Revenues</h1>
+    </div>
+
+    <router-link to="/revenue" tag="button" class="button is-primary">Add Revenue</router-link>
+
+    <div class="content">
+
+      <table id="expenses" class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Revenue ID</th>
+            <th>Amount</th>
+            <th>Project ID</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr v-for="revenue in revenues" :key="revenue.id">
+              <td>{{ revenue.id }}</td>
+              <td>{{ revenue.transactionDate }}</td>
+              <td>{{ revenue.transactionDesc }}</td>
+              <td>{{ revenue.locationId }}</td>
+              <td>{{ revenue.revenueId }}</td>
+              <td>{{ revenue.transactionAmount | toCurrency }}</td>
+              <td>{{ revenue.projectId }}</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>
+
+
+<script>
+export default {
+    name: 'Revenues',
+    data: () => ({ 
+      revenues: [] 
+    }),
+        async mounted() {
+            console.log('revenues mounted begin');
+            const { data } = await this.$http.get('http://localhost:8080/api/revenues');
+            console.log('revenues mounted data', data);
+            this.revenues = data;
+        },
+    methods: {
+      revenueDetail(expenseId) {
+          this.$router.push('revenue/' + revenueId);
+      }
+    },
+}
+</script>
+
+<style scoped>
+  button {
+    float: right;
+  }
+
+  .content table th:not([align]) {
+    text-align: left;
+  }
+
+  .button.is-primary {
+    background-color: black;
+    margin-bottom: 50px;
+  }
+
+  .button.is-primary:hover {
+    background-color: #666666;
+  }
+</style>

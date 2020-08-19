@@ -86,4 +86,17 @@ export default {
     label.radio {
         margin-right: 1rem;
     }
+
+    button{
+        margin-top: 10px;
+    }
+    
+    button.is-primary{
+        background-color: black;
+        margin-top: 10px;
+    }
+
+    button.is-primary:hover{
+        background-color: #666666;
+    }
 </style>

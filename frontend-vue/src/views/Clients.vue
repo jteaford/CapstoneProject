@@ -61,4 +61,8 @@ export default {
   .content table th:not([align]) {
     text-align: left;
   }
+
+  .table {
+    margin-bottom: 100px;
+  }
 </style>

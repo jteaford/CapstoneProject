@@ -3,8 +3,8 @@
 USE clevelandcarpentry;
 DROP TABLE IF EXISTS expenses;
 DROP TABLE IF EXISTS ledger;
-DROP TABLE IF EXISTS locations;
 DROP TABLE IF EXISTS revenues;
+DROP TABLE IF EXISTS locations;
 DROP TABLE IF EXISTS projects;
 DROP TABLE IF EXISTS clients;
 drop table if exists referrals;
@@ -70,6 +70,8 @@ insert into clients (client_code, client_first_name, client_last_name, referral_
 insert into clients (client_code, client_first_name, client_last_name, referral_id) values ('AM', 'Ashley', 'Michelle', 7);
 insert into clients (client_code, client_first_name, client_last_name, referral_id) values ('AS', 'Amber', 'Schmit', 7);
 insert into clients (client_code, client_first_name, client_last_name, referral_id) values ('MC', 'Maria', 'Clark', 2);
+insert into clients (client_code, client_first_name, client_last_name, referral_id) values ('DA', 'Daryl', 'Anderson', 3);
+
 
 select * from clients;
 
@@ -149,14 +151,15 @@ create table locations (
 location_id INT AUTO_INCREMENT PRIMARY KEY,
 location_name VARCHAR(50),
 address_desc VARCHAR(50),
-location_milage INT,
+location_mileage INT,
 location_address VARCHAR(50)
 );
 
-insert into locations (location_name, address_desc, location_milage, location_address) values ('Lowe''s', '183rd & Center', 3.8, '18375 Wright St, Omaha, NE 68130');
-insert into locations (location_name, address_desc, location_milage, location_address) values ('Lowe''s', '75th & Dodge', 14.2, '7525 Dodge St, Omaha, NE 68114');
-insert into locations (location_name, location_milage, location_address) values ('Liberty Hardwoods', 17.1, '1920 S 19th St, Omaha, NE 68108');
-insert into locations (location_name, address_desc, location_milage, location_address) values ('Home Depot', 'L Street', 5.8, '12710 L St, Omaha, NE 68137');
+insert into locations (location_name, address_desc, location_mileage, location_address) values ('Lowe''s', '183rd & Center', 3.8, '18375 Wright St, Omaha, NE 68130');
+insert into locations (location_name, address_desc, location_mileage, location_address) values ('Lowe''s', '75th & Dodge', 14.2, '7525 Dodge St, Omaha, NE 68114');
+insert into locations (location_name, location_mileage, location_address) values ('Liberty Hardwoods', 17.1, '1920 S 19th St, Omaha, NE 68108');
+insert into locations (location_name, address_desc, location_mileage, location_address) values ('Home Depot', 'L Street', 5.8, '12710 L St, Omaha, NE 68137');
+insert into locations (location_name, location_mileage, location_address) values ('Woodcraft', 6.3, '14605 Wright St, Omaha, NE 68144');
 
 create table revenues (
 transaction_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -186,4 +189,6 @@ project_id INT,
 FOREIGN KEY (project_id) REFERENCES projects (project_id)
 );
 
-insert into expenses (date_of_transaction, transaction_description, transaction_amount) values ('2020-08-18', 'Table Saw', 1200.00);
+insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_id) values ('2020-08-18', 'Table Saw', 5, 1200.00, 2);
+
+select * from expenses;

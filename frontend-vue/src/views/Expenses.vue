@@ -16,7 +16,7 @@
             <th>Description</th>
             <th>Location</th>
             <th>Amount</th>
-            <th>Expense ID</th>
+            <th>Expense Type</th>
             <th>Project ID</th>
           </tr>
         </thead>
@@ -25,9 +25,9 @@
               <td>{{ expense.id }}</td>
               <td>{{ expense.transactionDate }}</td>
               <td>{{ expense.transactionDesc }}</td>
-              <td>{{ expense.location.locationName }} {{ expense.location.addressDesc }}</td>
+              <td>{{ expense.locationName }} {{ expense.addressDesc }}</td>
               <td>{{ expense.transactionAmount | toCurrency }}</td>
-              <td>{{ expense.expenseId }}</td>
+              <td>{{ expense.expense }}</td>
               <td>{{ expense.projectId }}</td>
             </tr>
         </tbody>
@@ -50,8 +50,8 @@ export default {
             this.expenses = data;
         },
     methods: {
-      expenseDetail(expenseId) {
-          this.$router.push('expense/' + expenseId);
+      expenseDetail(expense) {
+          this.$router.push('expense/' + expense);
       }
     },
 }

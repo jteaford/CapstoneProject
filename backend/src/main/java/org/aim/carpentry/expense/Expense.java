@@ -39,8 +39,9 @@ public class Expense {
     @Column(name="transaction_amount")
     private BigDecimal transactionAmount;
 
-    @Column(name="expense_id")
-    private Integer expenseId;
+    @ManyToOne
+    @JoinColumn(name = "expense_id", nullable = false)
+    private Expense expense;
 
     @ManyToOne
     @JoinColumn(name = "project_id", nullable = false)
@@ -87,20 +88,20 @@ public class Expense {
         this.location = location;
     }
 
-    public Integer getExpenseId() {
-        return expenseId;
-    }
-
-    public void setExpenseId(Integer expenseId) {
-        this.expenseId = expenseId;
-    }
-
     public Project getProject() {
         return project;
     }
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public Expense getExpense() {
+        return expense;
+    }
+
+    public void setExpense(Expense expense) {
+        this.expense = expense;
     }
 
     

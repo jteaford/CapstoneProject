@@ -7,9 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import org.aim.carpentry.location.Location;
 
 @Entity
 @Table(name = "revenues")
@@ -27,11 +31,13 @@ public class Revenue {
     @Column(name="transaction_description")
     private String transactionDesc;
 
-    @Column(name="location_id")
-    private Integer locationId;
+    @ManyToOne
+    @JoinColumn(name = "location_id", nullable = false)
+    private Location location;
 
-    @Column(name="revenue_id")
-    private Integer revenueId;
+    @ManyToOne
+    @JoinColumn(name = "revenue_id", nullable = false)
+    private Revenue revenue;
 
     @Column(name="transaction_amount")
     private BigDecimal transactionAmount;
@@ -63,20 +69,12 @@ public class Revenue {
         this.transactionDesc = transactionDesc;
     }
 
-    public Integer getLocationId() {
-        return locationId;
+    public Revenue getRevenue() {
+        return revenue;
     }
 
-    public void setLocationId(Integer locationId) {
-        this.locationId = locationId;
-    }
-
-    public Integer getRevenueId() {
-        return revenueId;
-    }
-
-    public void setRevenueId(Integer revenueId) {
-        this.revenueId = revenueId;
+    public void setRevenue(Revenue revenue) {
+        this.revenue = revenue;
     }
 
     public BigDecimal getTransactionAmount() {
@@ -93,6 +91,14 @@ public class Revenue {
 
     public void setProjectId(Integer projectId) {
         this.projectId = projectId;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     

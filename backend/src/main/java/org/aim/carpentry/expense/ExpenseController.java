@@ -45,7 +45,7 @@ public class ExpenseController {
 
         expense.setTransactionDate(expenseDetails.getTransactionDate());
         expense.setTransactionDesc(expenseDetails.getTransactionDesc());
-        expense.setLocationId(expenseDetails.getLocationId());
+        expense.setLocation(expenseDetails.getLocation());
         expense.setTransactionAmount(expenseDetails.getTransactionAmount());
         expense.setExpenseId(expenseDetails.getExpenseId());
         expense.setProjectId(expenseDetails.getProjectId());

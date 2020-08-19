@@ -7,9 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import org.aim.carpentry.location.Location;
 
 @Entity
 @Table(name = "expenses")
@@ -27,10 +31,11 @@ public class Expense {
     @Column(name="transaction_description")
     private String transactionDesc;
 
-    @Column(name="location_id")
-    private Integer locationId;
+    @ManyToOne
+    @JoinColumn(name = "location_id", nullable = false)
+    private Location location;
+    
     @Column(name="transaction_amount")
-
     private BigDecimal transactionAmount;
 
     @Column(name="expense_id")
@@ -63,12 +68,12 @@ public class Expense {
         this.transactionDesc = transactionDesc;
     }
 
-    public Integer getLocationId() {
-        return locationId;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setLocationId(Integer locationId) {
-        this.locationId = locationId;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public BigDecimal getTransactionAmount() {

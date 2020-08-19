@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(path = "/api/expenses")
+@RequestMapping(path = "/api/revenues")
 
 public class RevenueController {
     
@@ -45,8 +45,8 @@ public class RevenueController {
 
         revenue.setTransactionDate(revenueDetails.getTransactionDate());
         revenue.setTransactionDesc(revenueDetails.getTransactionDesc());
-        revenue.setLocationId(revenueDetails.getLocationId());
-        revenue.setRevenueId(revenueDetails.getRevenueId());
+        revenue.setLocation(revenueDetails.getLocation());
+        revenue.setRevenue(revenueDetails.getRevenue());
         revenue.setTransactionAmount(revenueDetails.getTransactionAmount());
         revenue.setProjectId(revenueDetails.getProjectId());
         revenueRepository.save(revenue);

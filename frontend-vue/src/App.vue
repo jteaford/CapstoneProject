@@ -25,7 +25,7 @@
 
       <router-link class="navbar-item" to="/expenses">Expenses</router-link>
 
-      <router-link class="navbar-item" to="/revenue">Revenue</router-link>
+      <router-link class="navbar-item" to="/revenues">Revenues</router-link>
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">

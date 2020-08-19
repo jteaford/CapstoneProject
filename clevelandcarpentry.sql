@@ -3,6 +3,7 @@
 USE clevelandcarpentry;
 DROP TABLE IF EXISTS expenses;
 DROP TABLE IF EXISTS ledger;
+DROP TABLE IF EXISTS locations;
 DROP TABLE IF EXISTS revenues;
 DROP TABLE IF EXISTS projects;
 DROP TABLE IF EXISTS clients;
@@ -134,21 +135,6 @@ insert into expense_types (expense_type) values ('Tool');
 insert into expense_types (expense_type) values ('Hardware');
 
 
-create table expenses (
-transaction_id INT AUTO_INCREMENT PRIMARY KEY,
-date_of_transaction DATE,
-transaction_description VARCHAR(250) NOT NULL,
-location_id INT,
-transaction_amount DECIMAL(16,2) NOT NULL,
-expense_id INT,
-FOREIGN KEY (expense_id) REFERENCES expense_types (expense_id),
-project_id INT,
-FOREIGN KEY (project_id) REFERENCES projects (project_id)
-);
-
-insert into expenses (date_of_transaction, transaction_description, transaction_amount) values ('2020-08-18', 'Table Saw', 1200.00);
-
-
 create table revenue_types (
 revenue_id INT AUTO_INCREMENT PRIMARY KEY,
 revenue_type VARCHAR(50)
@@ -159,11 +145,25 @@ insert into revenue_types (revenue_type) values ('Final Payment');
 insert into revenue_types (revenue_type) values ('Tax Return');
 
 
+create table locations (
+location_id INT AUTO_INCREMENT PRIMARY KEY,
+location_name VARCHAR(50),
+address_desc VARCHAR(50),
+location_milage INT,
+location_address VARCHAR(50)
+);
+
+insert into locations (location_name, address_desc, location_milage, location_address) values ('Lowe''s', '183rd & Center', 3.8, '18375 Wright St, Omaha, NE 68130');
+insert into locations (location_name, address_desc, location_milage, location_address) values ('Lowe''s', '75th & Dodge', 14.2, '7525 Dodge St, Omaha, NE 68114');
+insert into locations (location_name, location_milage, location_address) values ('Liberty Hardwoods', 17.1, '1920 S 19th St, Omaha, NE 68108');
+insert into locations (location_name, address_desc, location_milage, location_address) values ('Home Depot', 'L Street', 5.8, '12710 L St, Omaha, NE 68137');
+
 create table revenues (
 transaction_id INT AUTO_INCREMENT PRIMARY KEY,
 date_of_transaction DATE,
 transaction_description VARCHAR(250) NOT NULL,
 location_id INT,
+FOREIGN KEY (location_id) REFERENCES locations (location_id),
 revenue_id INT,
 FOREIGN KEY (revenue_id) REFERENCES revenue_types (revenue_id),
 transaction_amount INT NOT NULL,
@@ -171,4 +171,19 @@ project_id INT,
 FOREIGN KEY (project_id) REFERENCES projects (project_id)
 );
 
+insert into revenues (date_of_transaction, transaction_description, revenue_id, transaction_amount, project_id) values ('2020-08-17', 'Payment for Chairs', 2, 415.00, 1);
 
+create table expenses (
+transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+date_of_transaction DATE,
+transaction_description VARCHAR(250) NOT NULL,
+location_id INT,
+FOREIGN KEY (location_id) REFERENCES locations (location_id),
+transaction_amount DECIMAL(16,2) NOT NULL,
+expense_id INT,
+FOREIGN KEY (expense_id) REFERENCES expense_types (expense_id),
+project_id INT,
+FOREIGN KEY (project_id) REFERENCES projects (project_id)
+);
+
+insert into expenses (date_of_transaction, transaction_description, transaction_amount) values ('2020-08-18', 'Table Saw', 1200.00);

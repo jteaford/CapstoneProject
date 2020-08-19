@@ -15,7 +15,7 @@
             <th>Date</th>
             <th>Description</th>
             <th>Location</th>
-            <th>Revenue ID</th>
+            <th>Revenue Type</th>
             <th>Amount</th>
             <th>Project ID</th>
           </tr>
@@ -25,8 +25,8 @@
               <td>{{ revenue.id }}</td>
               <td>{{ revenue.transactionDate }}</td>
               <td>{{ revenue.transactionDesc }}</td>
-              <td>{{ revenue.locationId }}</td>
-              <td>{{ revenue.revenueId }}</td>
+              <td>{{ revenue.location.locationName }} {{ revenue.location.addressDesc }}</td>
+              <td>{{ revenue.revenue }}</td>
               <td>{{ revenue.transactionAmount | toCurrency }}</td>
               <td>{{ revenue.projectId }}</td>
             </tr>
@@ -50,8 +50,8 @@ export default {
             this.revenues = data;
         },
     methods: {
-      revenueDetail(expenseId) {
-          this.$router.push('revenue/' + revenueId);
+      revenueDetail(revenue) {
+          this.$router.push('revenue/' + revenue);
       }
     },
 }

@@ -25,7 +25,9 @@ Vue.use(VueRouter)
   {path: '/project/add', name: 'AddProject', component: () => import('../views/AddProject.vue')},
   {path: '/project/:id', name: 'Project', component: () => import('../views/ProjectDetail.vue')},
 
-  {path: '/expenses', name:'Expenses', component: () => import('../views/Expenses.vue')}
+  {path: '/expenses', name:'Expenses', component: () => import('../views/Expenses.vue')},
+  {path: '/revenues', name:'Revenues', component: () => import('../views/Revenues.vue')},
+  {path: '/ledger', name:'Business Ledger', component: () => import('../views/BusinessLedger.vue')}
   
 ]
 

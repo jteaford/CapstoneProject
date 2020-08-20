@@ -1,4 +1,4 @@
-package org.aim.carpentry.expense;
+package org.aim.carpentry.revenue;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -14,11 +14,10 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import org.aim.carpentry.location.Location;
-import org.aim.carpentry.project.Project;
 
 @Entity
-@Table(name = "expenses")
-public class Expense {
+@Table(name = "revenues")
+public class Revenue {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,17 +34,16 @@ public class Expense {
     @ManyToOne
     @JoinColumn(name = "location_id", nullable = false)
     private Location location;
-    
+
+    @ManyToOne
+    @JoinColumn(name = "revenue_id", nullable = false)
+    private Revenue revenue;
+
     @Column(name="transaction_amount")
     private BigDecimal transactionAmount;
 
-    @ManyToOne
-    @JoinColumn(name = "expense_id", nullable = false)
-    private Expense expense;
-
-    @ManyToOne
-    @JoinColumn(name = "project_id", nullable = false)
-    private Project project;
+    @Column(name="project_id")
+    private Integer projectId;
 
     public Integer getId() {
         return id;
@@ -71,7 +69,14 @@ public class Expense {
         this.transactionDesc = transactionDesc;
     }
 
-    
+    public Revenue getRevenue() {
+        return revenue;
+    }
+
+    public void setRevenue(Revenue revenue) {
+        this.revenue = revenue;
+    }
+
     public BigDecimal getTransactionAmount() {
         return transactionAmount;
     }
@@ -80,28 +85,20 @@ public class Expense {
         this.transactionAmount = transactionAmount;
     }
 
+    public Integer getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
+    }
+
     public Location getLocation() {
         return location;
     }
 
     public void setLocation(Location location) {
         this.location = location;
-    }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
-    public Expense getExpense() {
-        return expense;
-    }
-
-    public void setExpense(Expense expense) {
-        this.expense = expense;
     }
 
     

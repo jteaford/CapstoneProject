@@ -5,7 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.aim.carpentry.status.Status;
+import org.aim.carpentry.client.Client;
 
 @Entity
 @Table(name = "projects")
@@ -22,11 +27,13 @@ public class Project {
     @Column(name = "project_desc")
     private String projectDescription;
 
-    @Column(name = "status_id")
-    private Integer statusId;
+    @ManyToOne
+    @JoinColumn(name = "status_id", nullable = false)
+    private Status status;
 
-    @Column(name = "client_id")
-    private Integer clientId;
+    @ManyToOne
+    @JoinColumn(name = "client_id", nullable = false)
+    private Client client;
 
     @Column(name = "client_project_number")
     private Integer clientProjectNumber;
@@ -55,20 +62,20 @@ public class Project {
         this.projectDescription = projectDescription;
     }
 
-    public Integer getStatusId() {
-        return statusId;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setStatusId(Integer statusId) {
-        this.statusId = statusId;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
-    public Integer getClientId() {
-        return clientId;
+    public Client getClient() {
+        return client;
     }
 
-    public void setClientId(Integer clientId) {
-        this.clientId = clientId;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public Integer getClientProjectNumber() {

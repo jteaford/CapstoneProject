@@ -39,8 +39,8 @@ public class ProjectController {
 
         project.setProjectCode(projectDetails.getProjectCode());
         project.setProjectDescription(projectDetails.getProjectDescription());
-        project.setStatusId(projectDetails.getStatusId());
-        project.setClientId(projectDetails.getClientId());
+        project.setStatus(projectDetails.getStatus());
+        project.setClient(projectDetails.getClient());
         project.setClientProjectNumber(projectDetails.getClientProjectNumber());
         projectRepository.save(project);
 

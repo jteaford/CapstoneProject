@@ -16,16 +16,19 @@
             <th>Project Code</th>
             <th>Project Description</th>
             <th>Status</th>
-            <th>Client Name</th>
+            <th>Client</th>
+            <th>Project Number</th>
           </tr>
         </thead>
 
         <tbody>
             <tr v-for="project in projects" :key="project.id">
               <td>{{ project.id }}</td>
-              <td><a @click="projectDetail(project.id)">{{ project.projectCode }}</a></td>
-              <td>{{ client.clientStatus }}</td>
-              <td>{{ client.firstName }} {{ client.lastName }}</td>
+              <td>{{ project.projectCode }}</td>
+              <td>{{ project.projectDescription }}</td>
+              <td>{{ project.status.status }}</td>
+              <td>{{ project.client.firstName }} {{ project.client.lastName }}</td>
+              <td>{{ project.clientProjectNumber }}</td>
             </tr>
         </tbody>
 
@@ -51,7 +54,7 @@ export default {
             const { data } = await this.$http.get('http://localhost:8080/api/projects');
             console.log('projects mounted data', data);
             this.projects = data;
-        },
+        }
 }
 </script>
 
@@ -63,4 +66,18 @@ export default {
   .content table th:not([align]) {
     text-align: left;
   }
+
+  .button.is-primary {
+    background-color: black;
+    margin-bottom: 50px;
+  }
+
+  .button.is-primary:hover {
+    background-color: #666666;
+  }
+
+  .table {
+    margin-bottom: 100px;
+  }
+
 </style>

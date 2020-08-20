@@ -1,4 +1,4 @@
-package org.aim.carpentry.status;
+package org.aim.carpentry.expensetype;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,16 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "statuses")
-public class Status {
+@Table(name = "expense_types")
+public class ExpenseType {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "status_id")
+    @Column(name = "expense_id")
     private Integer id;
 
-    @Column(name = "project_status")
-    private String status;
+    @Column(name = "expense_type")
+    private String expense;
 
     public Integer getId() {
         return id;
@@ -27,13 +27,14 @@ public class Status {
         this.id = id;
     }
 
-    public String getStatus() {
-        return status;
+    public String getExpense() {
+        return expense;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setExpense(String expense) {
+        this.expense = expense;
     }
 
     
+
 }

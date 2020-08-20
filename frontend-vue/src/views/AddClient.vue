@@ -26,15 +26,26 @@
         <div class="field"> 
             <label class="label">Email Address</label>
             <div class="control">
-                <input class="input" type="text" v-model="client.emailAddress" placeholder="Email Address" />
+                <input id="email" class="input" type="email" name="email" v-model="client.emailAddress" placeholder="Email Address" />
             </div> 
         </div>
 
         <div class="field"> 
             <label class="label">Phone Number</label>
             <div class="control">
-                <input class="input" type="text" v-model="client.phoneNumber" placeholder="Phone Number" />
+                <input class="input" type="text" v-model="client.phoneNumber"/>
             </div> 
+        </div>
+
+        <div class="field">
+            <label class="label">Referral Type</label>
+            <div class="select">
+                <select v-model="client.referral.id" placeholder="Select Referral Type">
+                    <option v-for="referral in referrals" :value="referral.id" :key="referral.id">
+                        {{ referral.referral }}
+                    </option>
+                </select>
+            </div>
         </div>
    
         <div class="field is-grouped">
@@ -42,7 +53,7 @@
                 <button v-on:click="cancel" class="button">Cancel</button>
             </p> 
             <p class="control">
-                <button v-on:click="save" class="button">Save</button>
+                <button v-on:click="save" class="button is-primary">Save</button>
             </p>
         </div>
     </div>
@@ -57,10 +68,12 @@ export default {
             firstName: "",
             lastName: "",
             emailAddress: "",
-            phoneNumber: ""
-        }
+            phoneNumber: "",
+            referral: {}
+        },
+        referrals: [],
+        errors: []
     }),
-
     methods: {
         cancel() {
             this.$router.push({path: '/clients'});
@@ -71,7 +84,57 @@ export default {
             if (response.status === 200) {
                 this.$router.push({path: '/clients'});
             }
+        },
+        async getReferrals() {
+            const { data } = await this.$http.get('http://localhost:8080/api/referrals');
+            console.log('getReferrals() data', data)
+            return data;
+        },
+        async mounted() {
+        this.referrals = await this.getReferrals();
+        },
+        checkForm: function (e) {
+        this.errors = [];
+
+            if (!this.name) {
+                this.errors.push("Name required.");
+            }
+            if (!this.email) {
+                this.errors.push('Email required.');
+            } else if (!this.validEmail(this.email)) {
+                this.errors.push('Ope. Please enter a valid email.');
+            }
+
+            if (!this.errors.length) {
+                return true;
+            }
+
+            e.preventDefault();
+        },
+        validEmail: function (email) {
+        var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
         }
-    }
+}
 }
 </script>
+<style scoped>
+button {
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+button.is-primary {
+    background-color: black;
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+button.is-primary:hover {
+    background-color: #666666;
+}
+
+.input, .textarea {
+    width: 50%;
+}
+</style>

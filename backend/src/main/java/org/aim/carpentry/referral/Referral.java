@@ -1,4 +1,4 @@
-package org.aim.carpentry.status;
+package org.aim.carpentry.referral;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,16 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "statuses")
-public class Status {
+@Table(name = "referrals")
+public class Referral {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "status_id")
+    @Column(name = "referral_id")
     private Integer id;
 
-    @Column(name = "project_status")
-    private String status;
+    @Column(name = "referral_type")
+    private String referral;
 
     public Integer getId() {
         return id;
@@ -27,13 +27,12 @@ public class Status {
         this.id = id;
     }
 
-    public String getStatus() {
-        return status;
+    public String getReferral() {
+        return referral;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setReferral(String referral) {
+        this.referral = referral;
     }
 
-    
 }

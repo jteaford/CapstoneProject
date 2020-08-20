@@ -1,4 +1,4 @@
-package org.aim.carpentry.status;
+package org.aim.carpentry.expensetype;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/api/statuses")
+@RequestMapping(path = "/api/expensetypes")
 
-public class StatusController {
+public class ExpenseTypeController {
     
     @Autowired
-    private StatusRepository statusRepository;
+    private ExpenseTypeRepository expenseTypeRepository;
 
     @GetMapping
-    public Iterable<Status> getAllStatuses() {
-        return statusRepository.findAll();
+    public Iterable<ExpenseType> getAllExpenseTypes() {
+        return expenseTypeRepository.findAll();
     }
 
 }

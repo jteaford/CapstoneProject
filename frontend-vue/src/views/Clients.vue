@@ -16,6 +16,7 @@
             <th>Name</th>
             <th>Email Address</th>
             <th>Phone Number</th>
+            <th>Referral Type </th>
           </tr>
         </thead>
         <tbody>
@@ -24,7 +25,8 @@
               <td>{{ client.clientCode }}</td>
               <td><a @click="clientDetail(client.id)">{{ client.firstName }} {{ client.lastName }}</a></td>
               <td>{{ client.emailAddress }}</td>
-              <td>{{ client.phoneNumber }}</td>
+              <td>{{ client.phoneNumber | phone }}</td>
+              <td>{{ client.referral.referral }}</td>
             </tr>
         </tbody>
       </table>
@@ -35,19 +37,19 @@
 
 <script>
 export default {
-    name: 'Actors',
+    name: 'Clients',
     data: () => ({ 
-      actors: [] 
+      clients: [] 
     }),
         async mounted() {
-            console.log('actors mounted begin');
-            const { data } = await this.$http.get('http://localhost:8080/api/actors/');
-            console.log('actors mounted data', data);
-            this.actors = data;
+            console.log('clients mounted begin');
+            const { data } = await this.$http.get('http://localhost:8080/api/clients/');
+            console.log('clients mounted data', data);
+            this.clients = data;
         },
     methods: {
-      actorDetail(actorId) {
-          this.$router.push('actor/' + actorId);
+      clientDetail(clientId) {
+          this.$router.push('client/' + clientId);
       }
     },
 }
@@ -60,5 +62,22 @@ export default {
 
   .content table th:not([align]) {
     text-align: left;
+  }
+
+  .table {
+    margin-bottom: 100px;
+  }
+
+  .button.is-primary {
+    background-color: black;
+    margin-bottom: 50px;
+  }
+
+  .button.is-primary:hover {
+    background-color: #666666;
+  }
+
+  .table {
+    margin-bottom: 100px;
   }
 </style>

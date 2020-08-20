@@ -1,29 +1,85 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> 
-      <router-link to="/ledger">Business Ledger</router-link>
-      <router-link to="/clients">Clients</router-link> 
-      <router-link to="/projects">Projects</router-link>
-      <router-link to="/expenses">Expenses</router-link>
-      <router-link to="/revenue">Revenue</router-link>
-      <router-link to="/wood">Wood Inventory</router-link>
-      <router-link to="/timeclock">Time Clock</router-link>
-      <router-link to="/shoppinglist">Shopping List</router-link>
-      
-      <div id="nav-icons">
-      <router-link to="/userprofile"><i class="fas fa-user"></i></router-link>
-      <router-link to="/settings"><i class="fas fa-cog"></i></router-link>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      <img src="./assets/Cleveland-Custom-Carpentry-Logo-Reverse-02.png">
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <router-link class="navbar-item" to="/">Home</router-link>
+
+      <router-link class="navbar-item" to="/clients">Clients</router-link> 
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <router-link class="navbar-link" to="/projects">Projects</router-link>
+          <div class="navbar-dropdown">
+
+          <!-- Generated list of projects -->
+          <router-link class="navbar-item" to="/projects">Project 1</router-link>
+          <router-link class="navbar-item" to="/projects">Project 2</router-link>
+
+          <router-link class="navbar-item" to="/archive">Archive</router-link>
+            
+          </div>
       </div>
-    
+
+      <div class="navbar-item has-dropdown is-hoverable">
+      <router-link class="navbar-link" to="/ledger">Business Ledger</router-link>
+
+      <div class="navbar-dropdown">
+          <router-link class="navbar-item" to="/expenses">Expenses</router-link>
+
+          <router-link class="navbar-item" to="/revenues">Revenues</router-link>
+          
+        </div>
+      </div>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <router-link class="navbar-item" to="/wood">Wood Inventory</router-link>
+
+          <router-link class="navbar-item" to="/shoppinglist">Shopping List</router-link>
+          
+        </div>
+      </div>
     </div>
+
+    
+
+    <div class="navbar-end">
+      <div class="navbar-item"><router-link class="button is-primary" to="/timeclock">Time Clock</router-link></div>
+      <div class="navbar-item"><router-link to="/userprofile"><font-awesome-icon :icon="['fas', 'user']"/></router-link></div>
+      <div class="navbar-item"><router-link to="/settings"><font-awesome-icon :icon="['fas', 'cog']"/></router-link></div>
+    </div>
+  </div>
+</nav>
+    
     <div class="container">
     <router-view/>
     </div>
   </div>
 </template>
 
-<style>
+<script>
+export default {
+  name: 'App'
+}
+</script>
+
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -32,26 +88,59 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px 30px 30px 100px;
-  display: flex;
-  background-color: black; 
-  margin-bottom: 10vh;
+nav.navbar {
+  background-color: black;
+  padding: 30px 30px 30px 50px;
+  margin-bottom: 50px;
 }
 
-#nav a, i{
-  font-weight: lighter;
-  color: white;
-  padding-right: 3vw;
-}
-
-#nav a.router-link-exact-active {
+.navbar-item, .navbar-link {
   color: #666666;
 }
 
-#nav-icons {
-  display: flex;
-  justify-content: flex-end;
+.navbar-item img {
+max-height: 3rem;
 }
- 
+
+a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, .navbar-link.is-active {
+    background-color: black;
+    color: white
+}
+
+@media screen and (min-width: 1024px) {
+  .navbar-item.has-dropdown:focus .navbar-link, .navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active .navbar-link {
+    background-color: black;
+    color: white;
+  }
+}
+
+@media screen and (min-width: 1024px){
+  .navbar-dropdown {
+    background-color: black;
+    color: white;
+  }
+}
+
+@media screen and (min-width: 1024px){
+  .navbar-dropdown a.navbar-item:focus, .navbar-dropdown a.navbar-item:hover {
+    background-color: black;
+    color: white;
+  }
+}
+
+.navbar-link:not(.is-arrowless)::after {
+  border-color: #666666;
+}
+
+.button.is-primary {
+  background-color: #666666;
+}
+
+.button.is-primary:hover, .button.is-primary.is-hovered {
+  background-color: #999999;
+}
+
+.navbar-end a {
+  color: whitesmoke;
+}
 </style>

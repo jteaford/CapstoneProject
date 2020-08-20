@@ -1,4 +1,4 @@
-package org.aim.carpentry.status;
+package org.aim.carpentry.referral;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/api/statuses")
+@RequestMapping(path = "/api/referrals")
 
-public class StatusController {
+public class ReferralController {
     
     @Autowired
-    private StatusRepository statusRepository;
+    private ReferralRepository referralRepository;
 
     @GetMapping
-    public Iterable<Status> getAllStatuses() {
-        return statusRepository.findAll();
+    public Iterable<Referral> getAllReferrals() {
+        return referralRepository.findAll();
     }
 
 }

@@ -4,6 +4,17 @@
         <h1 class="title">Add Project</h1>
 
         <div class="field">
+            <label class="label">Client</label>
+            <div class="select">
+                <select v-model="project.client">
+                    <option v-for="client in clients" :value="client.id" :key="client.id">
+                        {{ client.firstName }} {{ client.lastName }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="field">
             <label class="label" for="projectCode">Project Code</label>
             <div class="control">
                 <input id="projectCode" class="input" type="text" v-model="project.projectCode" placeholder="Project Code" />
@@ -86,4 +97,21 @@ export default {
     label.radio {
         margin-right: 1rem;
     }
+
+    button{
+        margin-top: 10px;
+    }
+
+    button.is-primary{
+        background-color: black;
+        margin-top: 10px;
+    }
+
+    button.is-primary:hover{
+        background-color: #666666;
+    }
+    
+    .input, .textarea {
+    width: 50%;
+}
 </style>

@@ -56,6 +56,10 @@ export default {
 </script>
 
 <style scoped>
+  a {
+    color: #ec4747;
+  } 
+  
   button {
     float: right;
   }

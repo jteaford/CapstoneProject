@@ -13,7 +13,7 @@ public class ExpenseType {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "expense_id")
+    @Column(name = "expensetype_id")
     private Integer id;
 
     @Column(name = "expense_type")

@@ -27,8 +27,8 @@
               <td>{{ expense.transactionDesc }}</td>
               <td>{{ expense.location.locationName }} {{ expense.location.addressDesc }}</td>
               <td>{{ expense.transactionAmount | toCurrency }}</td>
-              <td>{{ expense.expensetype.expensetype }}</td>
-              <td>{{ expense.project }}</td>
+              <td>{{ expense.expensetype.expenseType }}</td>
+              <td>{{ expense.project ? expense.project.projectCode : '' }}</td>
             </tr>
         </tbody>
       </table>

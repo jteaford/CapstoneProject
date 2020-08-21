@@ -23,7 +23,7 @@ public class Expense {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name= "transaction_id")
+    @Column(name= "expense_id")
     private Integer id;
 
     @Column(name="date_of_transaction")
@@ -41,11 +41,11 @@ public class Expense {
     private BigDecimal transactionAmount;
 
     @ManyToOne
-    @JoinColumn(name = "expensetype_id", nullable = false)
+    @JoinColumn(name = "expense_type_id", nullable = false)
     private ExpenseType expensetype;
 
     @ManyToOne
-    @JoinColumn(name = "project_id", nullable = false)
+    @JoinColumn(name = "project_id")
     private Project project;
 
     public Integer getId() {

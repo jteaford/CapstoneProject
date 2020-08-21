@@ -23,14 +23,14 @@
           </tr>
         </thead>
         <tbody>
-            <tr v-for="expense in expenses" :key="expense.id">
-              <td>{{ expense.id }}</td>
-              <td>{{ expense.transactionDate }}</td>
-              <td>{{ expense.transactionDesc }}</td>
-              <td>{{ expense.location.locationName }} {{ expense.location.addressDesc }}</td>
-              <td>{{ expense.transactionAmount | toCurrency }}</td>
-              <td>{{ expense.expense }}</td>
-              <td>{{ expense.project }}</td>
+            <tr v-for="transaction in transactions" :key="transaction.id">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
         </tbody>
       </table>

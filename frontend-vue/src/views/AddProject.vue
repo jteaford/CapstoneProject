@@ -55,8 +55,9 @@
 export default {
     data: () => ({
         project: {
-            projectCode: null,
-            projectDescription: null,
+            id: {},
+            projectCode: "",
+            projectDescription: "",
             status: {}
         },
         statuses: [],
@@ -76,12 +77,12 @@ export default {
         },
       
         async getStatuses() {
-            const { data } = await this.$http.get('http://localhost:8080/api/statuses');
+            const { data } = await this.$http.get('http://localhost:8080/api/statuses/');
             console.log('getStatuses() data', data)
             return data;
         },
         async getClients() {
-            const { data } = await this.$http.get('http://localhost:8080/api/clients');
+            const { data } = await this.$http.get('http://localhost:8080/api/clients/');
             console.log('getClients() data', data);
             return data;
         }

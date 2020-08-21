@@ -21,7 +21,7 @@ public class Project {
     @Column(name = "project_id")
     private Integer id;
 
-    @Column(name = "project_code")
+    @Column(name = "project_code") 
     private String projectCode;
 
     @Column(name = "project_desc")

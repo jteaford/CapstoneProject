@@ -39,7 +39,7 @@
 export default {
     name: 'Clients',
     data: () => ({ 
-      clients: [] 
+      clients: []
     }),
         async mounted() {
             console.log('clients mounted begin');
@@ -50,6 +50,13 @@ export default {
     methods: {
       clientDetail(clientId) {
           this.$router.push('client/' + clientId);
+      },
+      async save() {
+            const response = await this.$http.post('http://localhost:8080/api/clients/', this.client)
+            console.log(response);
+            if (response.status === 200) {
+                this.$router.push({path: '/clients'});
+            }
       }
     },
 }

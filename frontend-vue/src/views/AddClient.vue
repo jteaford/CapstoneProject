@@ -79,19 +79,16 @@ export default {
             this.$router.push({path: '/clients'});
         },
         async save() {
-            const response = await this.$http.post('http://localhost:8080/api/clients/', this.clients)
+            const response = await this.$http.post('http://localhost:8080/api/clients/', this.client)
             console.log(response);
             if (response.status === 200) {
                 this.$router.push({path: '/clients'});
             }
         },
         async getReferrals() {
-            const { data } = await this.$http.get('http://localhost:8080/api/referrals');
+            const { data } = await this.$http.get('http://localhost:8080/api/referrals/');
             console.log('getReferrals() data', data)
             return data;
-        },
-        async mounted() {
-        this.referrals = await this.getReferrals();
         },
         checkForm: function (e) {
         this.errors = [];
@@ -115,7 +112,10 @@ export default {
         var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
         }
-}
+},
+    async mounted() {
+        this.referrals = await this.getReferrals();
+        }
 }
 </script>
 <style scoped>

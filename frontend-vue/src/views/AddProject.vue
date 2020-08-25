@@ -6,7 +6,7 @@
         <div class="field">
             <label class="label">Client</label>
             <div class="select">
-                <select v-model="project.client">
+                <select v-model="project.client.id">
                     <option v-for="client in clients" :value="client.id" :key="client.id">
                         {{ client.firstName }} {{ client.lastName }}
                     </option>
@@ -39,12 +39,19 @@
             </div>
         </div>
 
+        <div class="field">
+            <label class="label" for="projectNumber">Project Number</label>
+            <div class="control">
+                <input id="projectNumber" class="input" type="text" v-model="project.clientProjectNumber" placeholder="Project Number" />
+            </div>
+        </div>
+
         <div class="field is-grouped">
             <div class="control">
-                <button @click="cancel" class="button">Cancel</button>
+                <button v-on:click="cancel" class="button">Cancel</button>
             </div>
             <div class="control">
-                <button @click="save" class="button is-primary">Save</button>
+                <button v-on:click="save" class="button is-primary">Save</button>
             </div>
         </div>
 
@@ -55,11 +62,12 @@
 export default {
     data: () => ({
         project: {
-            id: {},
+            client: {},
             projectCode: "",
             projectDescription: "",
-            status: {}
-        },
+            status: {},
+            clientProjectNumber: ""
+    },
         statuses: [],
         clients: []
     }),
@@ -67,7 +75,7 @@ export default {
         async save() {
             // save project, that project object (data.project) will be sent
             const response = await this.$http.post('http://localhost:8080/api/projects/', this.project);
-            console.log('AddProject.save() response=', response);
+            console.log(response);
             if (response.status === 200) {
             this.$router.push({path: '/projects'});
             }

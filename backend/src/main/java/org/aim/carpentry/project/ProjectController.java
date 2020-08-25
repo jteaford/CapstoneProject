@@ -2,9 +2,11 @@ package org.aim.carpentry.project;
 
 import java.util.Optional;
 
+import org.aim.carpentry.status.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -43,6 +45,15 @@ public class ProjectController {
         project.setClient(projectDetails.getClient());
         project.setClientProjectNumber(projectDetails.getClientProjectNumber());
         projectRepository.save(project);
+
+        return "Updated";
+    }
+
+    @PatchMapping(path = "/{id}")
+    public @ResponseBody String updateProjectStatus(@PathVariable (value = "id") Integer id, @RequestBody Status status) {
+        System.out.println("projectid = " + id);
+        System.out.println("statusid = " + status.getId());
+        projectRepository.updateStatus(id, status.getId());
 
         return "Updated";
     }

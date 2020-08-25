@@ -26,9 +26,9 @@
               <td>{{ revenue.transactionDate }}</td>
               <td>{{ revenue.transactionDesc }}</td>
               <td>{{ revenue.locationName }} {{ revenue.addressDesc }}</td>
-              <td>{{ revenue.revenue }}</td>
+              <td>{{ revenue.revenuetype.revenuetype }}</td>
               <td>{{ revenue.transactionAmount | toCurrency }}</td>
-              <td>{{ revenue.projectId }}</td>
+              <td>{{ revenue.project ? revenue.project.projectCode : '' }}</td>
             </tr>
         </tbody>
       </table>

@@ -46,9 +46,9 @@ public class RevenueController {
         revenue.setTransactionDate(revenueDetails.getTransactionDate());
         revenue.setTransactionDesc(revenueDetails.getTransactionDesc());
         revenue.setLocation(revenueDetails.getLocation());
-        revenue.setRevenue(revenueDetails.getRevenue());
+        revenue.setRevenuetype(revenueDetails.getRevenuetype());
         revenue.setTransactionAmount(revenueDetails.getTransactionAmount());
-        revenue.setProjectId(revenueDetails.getProjectId());
+        revenue.setProject(revenueDetails.getProject());
         revenueRepository.save(revenue);
 
         return "Updated";

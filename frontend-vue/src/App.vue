@@ -24,9 +24,8 @@
           <div class="navbar-dropdown">
 
           <!-- Generated list of projects -->
-          <router-link class="navbar-item" to="/projects">Project 1</router-link>
-          <router-link class="navbar-item" to="/projects">Project 2</router-link>
-
+          <router-link class="navbar-item" :to="'/projects/' + project" v-for="project in projects" :value="project.id" :key="project.id"> {{ project.projectCode }} {{ project.projectDescription }}</router-link>
+            
           <router-link class="navbar-item" to="/archive">Archive</router-link>
             
           </div>
@@ -75,7 +74,21 @@
 
 <script>
 export default {
-  name: 'App'
+    name: 'App',
+    data: () => ({ 
+      projects: [] 
+    }),
+    methods: {
+      projectDetail(projectId) {
+          this.$router.push('project/' + projectId);
+      }
+    },
+        async mounted() {
+            console.log('projects mounted begin');
+            const { data } = await this.$http.get('http://localhost:8080/api/projects');
+            console.log('projects mounted data', data);
+            this.projects = data.filter(project => project.status.id === 3);
+        }
 }
 </script>
 

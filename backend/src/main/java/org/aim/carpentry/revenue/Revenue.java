@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import org.aim.carpentry.location.Location;
+import org.aim.carpentry.project.Project;
+import org.aim.carpentry.revenuetype.RevenueType;
 
 @Entity
 @Table(name = "revenues")
@@ -21,7 +23,7 @@ public class Revenue {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name= "transaction_id")
+    @Column(name= "revenue_id")
     private Integer id;
 
     @Column(name="date_of_transaction")
@@ -36,14 +38,15 @@ public class Revenue {
     private Location location;
 
     @ManyToOne
-    @JoinColumn(name = "revenue_id", nullable = false)
-    private Revenue revenue;
+    @JoinColumn(name = "revenue_type_id", nullable = false)
+    private RevenueType revenuetype;
 
     @Column(name="transaction_amount")
     private BigDecimal transactionAmount;
 
-    @Column(name="project_id")
-    private Integer projectId;
+    @ManyToOne
+    @JoinColumn(name="project_id")
+    private Project project;
 
     public Integer getId() {
         return id;
@@ -69,13 +72,7 @@ public class Revenue {
         this.transactionDesc = transactionDesc;
     }
 
-    public Revenue getRevenue() {
-        return revenue;
-    }
-
-    public void setRevenue(Revenue revenue) {
-        this.revenue = revenue;
-    }
+    
 
     public BigDecimal getTransactionAmount() {
         return transactionAmount;
@@ -85,13 +82,7 @@ public class Revenue {
         this.transactionAmount = transactionAmount;
     }
 
-    public Integer getProjectId() {
-        return projectId;
-    }
-
-    public void setProjectId(Integer projectId) {
-        this.projectId = projectId;
-    }
+    
 
     public Location getLocation() {
         return location;
@@ -99,6 +90,22 @@ public class Revenue {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public RevenueType getRevenuetype() {
+        return revenuetype;
+    }
+
+    public void setRevenuetype(RevenueType revenuetype) {
+        this.revenuetype = revenuetype;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     

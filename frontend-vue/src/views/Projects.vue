@@ -26,7 +26,14 @@
               <td>{{ project.id }}</td>
               <td>{{ project.projectCode }}</td>
               <td>{{ project.projectDescription }}</td>
-              <td>{{ project.status.status }}</td>
+              <td>
+                <a @click.stop.prevent="selectStatus()">{{ project.status.status }}</a>
+                <select @change="setStatus(project.id, $event)" v-model="project.status.id" placeholder="Select Status Type">
+                    <option v-for="status in statuses" :value="status.id" :key="status.id">
+                        {{ status.status }}
+                    </option>
+                </select>
+                </td>
               <td>{{ project.client.firstName }} {{ project.client.lastName }}</td>
               <td>{{ project.clientProjectNumber }}</td>
             </tr>
@@ -42,11 +49,27 @@
 export default {
     name: 'Projects',
     data: () => ({ 
-      projects: [] 
+      projects: [],
+      statuses: [] 
     }),
     methods: {
       projectDetail(projectId) {
           this.$router.push('project/' + projectId);
+      },
+      setStatus: function(projectId, event) {
+        console.log(event.target.value);
+        console.log(projectId);
+        this.updateStatus(projectId, event.target.value);
+      },
+      selectStatus(){
+        alert('Hello');
+      },
+      async updateStatus(projectId, statusId){
+            console.log("statusId = ", statusId);
+            let status = {}; 
+            status.id = statusId;
+            const response = await this.$http.patch('http://localhost:8080/api/projects/' + projectId, status);
+            console.log(response);
       }
     },
         async mounted() {
@@ -54,7 +77,11 @@ export default {
             const { data } = await this.$http.get('http://localhost:8080/api/projects');
             console.log('projects mounted data', data);
             this.projects = data;
-        }
+            const statuses = await this.$http.get('http://localhost:8080/api/statuses');
+            console.log('statuses mounted data', statuses);
+            this.statuses = statuses.data;
+        },
+        
 }
 </script>
 

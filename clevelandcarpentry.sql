@@ -128,7 +128,7 @@ WHERE client_id = 6;
 
 
 create table expense_types (
-expense_id INT AUTO_INCREMENT PRIMARY KEY,
+expense_type_id INT AUTO_INCREMENT PRIMARY KEY,
 expense_type VARCHAR(50)
 );
 
@@ -138,7 +138,7 @@ insert into expense_types (expense_type) values ('Hardware');
 
 
 create table revenue_types (
-revenue_id INT AUTO_INCREMENT PRIMARY KEY,
+revenue_type_id INT AUTO_INCREMENT PRIMARY KEY,
 revenue_type VARCHAR(50)
 );
 
@@ -162,13 +162,13 @@ insert into locations (location_name, address_desc, location_mileage, location_a
 insert into locations (location_name, location_mileage, location_address) values ('Woodcraft', 6.3, '14605 Wright St, Omaha, NE 68144');
 
 create table revenues (
-transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+revenue_id INT AUTO_INCREMENT PRIMARY KEY,
 date_of_transaction DATE,
 transaction_description VARCHAR(250) NOT NULL,
 location_id INT,
 FOREIGN KEY (location_id) REFERENCES locations (location_id),
-revenue_id INT,
-FOREIGN KEY (revenue_id) REFERENCES revenue_types (revenue_id),
+revenue_type_id INT,
+FOREIGN KEY (revenue_type_id) REFERENCES revenue_types (revenue_type_id),
 transaction_amount INT NOT NULL,
 project_id INT,
 FOREIGN KEY (project_id) REFERENCES projects (project_id)
@@ -177,18 +177,21 @@ FOREIGN KEY (project_id) REFERENCES projects (project_id)
 insert into revenues (date_of_transaction, transaction_description, revenue_id, transaction_amount, project_id) values ('2020-08-17', 'Payment for Chairs', 2, 415.00, 1);
 
 create table expenses (
-transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+expense_id INT AUTO_INCREMENT PRIMARY KEY,
 date_of_transaction DATE,
 transaction_description VARCHAR(250) NOT NULL,
 location_id INT,
 FOREIGN KEY (location_id) REFERENCES locations (location_id),
 transaction_amount DECIMAL(16,2) NOT NULL,
-expense_id INT,
-FOREIGN KEY (expense_id) REFERENCES expense_types (expense_id),
+expense_type_id INT,
+FOREIGN KEY (expense_type_id) REFERENCES expense_types (expense_type_id),
 project_id INT,
 FOREIGN KEY (project_id) REFERENCES projects (project_id)
 );
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_id) values ('2020-08-18', 'Table Saw', 5, 1200.00, 2);
+insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-08-18', 'Table Saw', 5, 1200.00, 2);
+insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-08-18', 'Stainless Steel Screws', 1, 4.23, 3, 1);
+
+
 
 select * from expenses;

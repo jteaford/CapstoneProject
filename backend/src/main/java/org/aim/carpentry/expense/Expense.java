@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import org.aim.carpentry.expensetype.ExpenseType;
 import org.aim.carpentry.location.Location;
 import org.aim.carpentry.project.Project;
 
@@ -22,7 +23,7 @@ public class Expense {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name= "transaction_id")
+    @Column(name= "expense_id")
     private Integer id;
 
     @Column(name="date_of_transaction")
@@ -40,11 +41,11 @@ public class Expense {
     private BigDecimal transactionAmount;
 
     @ManyToOne
-    @JoinColumn(name = "expense_id", nullable = false)
-    private Expense expense;
+    @JoinColumn(name = "expense_type_id", nullable = false)
+    private ExpenseType expensetype;
 
     @ManyToOne
-    @JoinColumn(name = "project_id", nullable = false)
+    @JoinColumn(name = "project_id")
     private Project project;
 
     public Integer getId() {
@@ -96,13 +97,15 @@ public class Expense {
         this.project = project;
     }
 
-    public Expense getExpense() {
-        return expense;
+    public ExpenseType getExpensetype() {
+        return expensetype;
     }
 
-    public void setExpense(Expense expense) {
-        this.expense = expense;
+    public void setExpensetype(ExpenseType expensetype) {
+        this.expensetype = expensetype;
     }
+
+    
 
     
 }

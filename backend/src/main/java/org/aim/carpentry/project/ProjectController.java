@@ -66,8 +66,9 @@ public class ProjectController {
 
 
     @PostMapping(path = "/")
-    public Project createProject(@RequestBody Project project){
-        return projectRepository.save(project);
+    public @ResponseBody String createClient(@RequestBody Project project) {
+        projectRepository.save(project);
+        return "Saved";
     }
 
     }

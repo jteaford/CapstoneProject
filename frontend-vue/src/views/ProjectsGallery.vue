@@ -1,44 +1,38 @@
 <template>
   <div id="main">
     <div class="header">
-      <h1 class="title">Projects</h1>
+      <h1 class="title">Projects Gallery</h1>
     </div>
 
     <router-link to="/project/add" tag="button" class="button is-primary">Add Project</router-link>
 
-    <div class="content">
+    <!-- Flexbox for Gallery -->
+    <ul class="gallery" v-for="project in projects" :key="project.id">
+      
+      <!-- Flex Items (repeat through list) -->
+      <li class="gal-list-item">
+        <a href="" class="list-link">
+          <figure class="list-link__image objFit">
+              <img src="" sizes="100vh">
+          </figure>
+          <div class="list-link__wrapper">
+              <span class="list-link__project">{{ project.projectCode }} {{ project.projectDescription }}</span>
+              
+              <span class="list-link__client"><a @click="clientDetail(client.id)">{{ client.firstName }} {{ client.lastName }}</a></span>
 
-      <table class="table">
-        
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Project</th>
-            <th>Client</th>
-            <th>Status</th>
-            <th>Project Number</th>
-          </tr>
-        </thead>
-
-        <tbody>
-            <tr v-for="project in projects" :key="project.id">
-              <td>{{ project.id }}</td>
-              <td><a @click="projectDetail(project.id)"><strong>{{ project.projectCode }}</strong> {{ project.projectDescription }}</a></td>
-              <td>{{ project.client.firstName }} {{ project.client.lastName }}</td>
-              <td>  
+              <span class="list-link__status">
                 <a @click.stop.prevent="selectStatus()">{{ project.status.status }}</a>
                 <select @change="setStatus(project.id, $event)" v-model="project.status.id" placeholder="Select Status Type">
                     <option v-for="status in statuses" :value="status.id" :key="status.id">
                         {{ status.status }}
                     </option>
                 </select>
-                </td>
-              <td>{{ project.clientProjectNumber }}</td>
-            </tr>
-        </tbody>
+              </span>
 
-      </table>
-    </div>
+          </div>
+        </a>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -74,7 +68,7 @@ export default {
             console.log('projects mounted begin');
             const { data } = await this.$http.get('http://localhost:8080/api/projects');
             console.log('projects mounted data', data);
-            this.projects = data;
+            this.projects = data.filter(project => project.status.id >= 3);
             const statuses = await this.$http.get('http://localhost:8080/api/statuses');
             console.log('statuses mounted data', statuses);
             this.statuses = statuses.data;
@@ -101,8 +95,45 @@ export default {
     background-color: #666666;
   }
 
-  .table {
-    margin-bottom: 100px;
+  .gallery {
+    display: flex;
+    height: 100%;
+    width: 20%;
+    margin: 0;
   }
 
+  li {
+    border: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+  }
+
+  .list-link__wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: left;
+  }
+
+  .list-link__project {
+    display: block;
+    color: white;
+    font-weight: bolder;
+  }
+
+  .list-link__client {
+      display: block;
+      color: #444;
+      font-weight: lighter;
+    }
+
+  a.list-link__project {
+    text-decoration: none;
+  }
+
+  a.list-link__client {
+    text-decoration: none;
+  }
+  
 </style>

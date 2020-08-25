@@ -78,7 +78,7 @@ select * from clients;
 create table projects (
 project_id INT AUTO_INCREMENT PRIMARY KEY,
 project_code VARCHAR(20) NOT NULL,
-project_desc VARCHAR(100),
+project_desc VARCHAR(50),
 status_id INT,
 client_id INT,
 FOREIGN KEY (client_id) REFERENCES clients (client_id),
@@ -174,7 +174,7 @@ project_id INT,
 FOREIGN KEY (project_id) REFERENCES projects (project_id)
 );
 
-insert into revenues (date_of_transaction, transaction_description, revenue_id, transaction_amount, project_id) values ('2020-08-17', 'Payment for Chairs', 2, 415.00, 1);
+insert into revenues (date_of_transaction, transaction_description, revenue_type_id, transaction_amount, project_id) values ('2020-08-17', 'Payment for Chairs', 2, 415.00, 1);
 
 create table expenses (
 expense_id INT AUTO_INCREMENT PRIMARY KEY,

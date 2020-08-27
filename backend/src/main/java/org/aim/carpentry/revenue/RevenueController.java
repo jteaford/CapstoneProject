@@ -32,6 +32,12 @@ public class RevenueController {
         return revenue.get();
     }
 
+    @GetMapping(path = "/project/{id}")
+    public @ResponseBody Iterable<Revenue> getRevenueByProjectId(@PathVariable (value = "id") Integer id) {
+        Iterable<Revenue> revenues = revenueRepository.findByProjectId(id);
+        return revenues;
+    }
+
     @PostMapping(path = "/")
     public @ResponseBody String createExpense(@RequestBody Revenue revenue) {
         revenueRepository.save(revenue);

@@ -5,6 +5,8 @@ DROP TABLE IF EXISTS expenses;
 DROP TABLE IF EXISTS ledger;
 DROP TABLE IF EXISTS revenues;
 DROP TABLE IF EXISTS locations;
+DROP TABLE IF EXISTS timeclock;
+DROP TABLE IF EXISTS tasks;
 DROP TABLE IF EXISTS projects;
 DROP TABLE IF EXISTS clients;
 drop table if exists referrals;
@@ -45,9 +47,9 @@ insert into referrals (referral_type) values ('Other');
 CREATE TABLE clients (
 client_id INT AUTO_INCREMENT PRIMARY KEY,
 client_code VARCHAR(3) NOT NULL,
-client_first_name VARCHAR(50) NOT NULL,
-client_last_name VARCHAR(50) NOT NULL,
-client_email_address VARCHAR(100),
+client_first_name VARCHAR(25) NOT NULL,
+client_last_name VARCHAR(25) NOT NULL,
+client_email_address VARCHAR(50),
 client_phone_number VARCHAR(10),
 referral_id INT,
 FOREIGN KEY (referral_id) REFERENCES referrals (referral_id)
@@ -71,14 +73,15 @@ insert into clients (client_code, client_first_name, client_last_name, referral_
 insert into clients (client_code, client_first_name, client_last_name, referral_id) values ('AS', 'Amber', 'Schmit', 7);
 insert into clients (client_code, client_first_name, client_last_name, referral_id) values ('MC', 'Maria', 'Clark', 2);
 insert into clients (client_code, client_first_name, client_last_name, referral_id) values ('DA', 'Daryl', 'Anderson', 3);
-
+insert into clients (client_code, client_first_name, client_last_name, referral_id) values ('NL', 'Nikki', 'Loos', 2);
+insert into clients (client_code, client_first_name, client_last_name, referral_id) values ('SA', 'Sara', 'Atkins', 6);
 
 select * from clients;
 
 create table projects (
 project_id INT AUTO_INCREMENT PRIMARY KEY,
 project_code VARCHAR(20) NOT NULL,
-project_desc VARCHAR(50),
+project_desc VARCHAR(75),
 status_id INT,
 client_id INT,
 FOREIGN KEY (client_id) REFERENCES clients (client_id),
@@ -104,8 +107,11 @@ insert into projects (project_code, project_desc, status_id, client_id, client_p
 insert into projects (project_code, project_desc, status_id, client_id, client_project_number) values ('AM-01', 'Porch Swing', 5, 15, 1);
 insert into projects (project_code, project_desc, status_id, client_id, client_project_number) values ('LD-01', 'Bathroom Linen Cabinet', 2, 14, 1);
 insert into projects (project_code, project_desc, status_id, client_id, client_project_number) values ('MC-01', '(2) Twin Nightstands', 5, 17, 1);
+insert into projects (project_code, project_desc, status_id, client_id, client_project_number) values ('NL-01', 'Outdoor Table + (4) High-Top Adirondack Chairs', 3, 19, 1);
+insert into projects (project_code, project_desc, status_id, client_id, client_project_number) values ('SA-01', 'Outdoor Picnic Trestle Table & (2) Benches', 2, 20, 1);
+insert into projects (project_code, project_desc, status_id, client_id, client_project_number) values ('DA-01', '(2) Adirondack Chairs', 2, 18, 1);
 
-
+select * from projects;
 
 create table ledger (
 transaction_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -161,6 +167,8 @@ insert into locations (location_name, location_mileage, location_address) values
 insert into locations (location_name, address_desc, location_mileage, location_address) values ('Home Depot', 'L Street', 5.8, '12710 L St, Omaha, NE 68137');
 insert into locations (location_name, location_mileage, location_address) values ('Woodcraft', 6.3, '14605 Wright St, Omaha, NE 68144');
 
+select * from locations;
+
 create table revenues (
 revenue_id INT AUTO_INCREMENT PRIMARY KEY,
 date_of_transaction DATE,
@@ -191,7 +199,28 @@ FOREIGN KEY (project_id) REFERENCES projects (project_id)
 
 insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-08-18', 'Table Saw', 5, 1200.00, 2);
 insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-08-18', 'Stainless Steel Screws', 1, 4.23, 3, 1);
+insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-08-24', 'Wood', 3, 510, 1, 19);
+
+create table tasks (
+task_id INT AUTO_INCREMENT PRIMARY KEY,
+task_type VARCHAR(50),
+task_code VARCHAR(4),
+hourly_rate INT
+);
+
+create table timeclock (
+time_id INT AUTO_INCREMENT PRIMARY KEY,
+project_id INT,
+FOREIGN KEY (project_id) REFERENCES projects (project_id),
+task_id INT,
+FOREIGN KEY (task_id) REFERENCES tasks (task_id),
+time_logged DECIMAL(16,2) NOT NULL
+);
+
+insert into tasks (task_type, task_code, hourly_rate) values ('Shopping', 'SHOP', 15);
+insert into tasks (task_type, task_code, hourly_rate) values ('Woodworking', 'WW', 30);
+insert into tasks (task_type, task_code, hourly_rate) values ('Finishing', 'FNSH', 25);
+insert into tasks (task_type, task_code, hourly_rate) values ('Project Management', 'PROM', 20);
 
 
-
-select * from expenses;
+select e.* from expenses e where e.project_id=1;

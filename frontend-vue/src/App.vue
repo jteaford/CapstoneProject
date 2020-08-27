@@ -24,7 +24,7 @@
           <div class="navbar-dropdown">
 
           <!-- Generated list of projects -->
-          <router-link class="navbar-item" :to="'/project/:id' + project" v-for="project in projects" :value="project.id" :key="project.id"> {{ project.projectCode }} {{ project.projectDescription }}</router-link>
+          <router-link class="navbar-item" :to="'/project/' + project.id" v-for="project in projects" :value="project.id" :key="project.id"> {{ project.projectCode }} {{ project.projectDescription }}</router-link>
             
           <router-link class="navbar-item" to="/archive">Archive</router-link>
 

@@ -25,8 +25,12 @@
 
         <div id="doc-buttons" class="project-element">
             <router-link to="/estimate/add" tag="button" class="button is-primary">Create Estimate</router-link>  
-            <router-link to="/invoice/add" tag="button" class="button is-primary">Create Invoice</router-link>    
+            <router-link to="/invoice/add" tag="button" class="button is-primary">Create Invoice</router-link>   
         </div>
+
+        <div id="cam" class="project-element">
+            <router-link to=""><font-awesome-icon :icon="['fas', 'camera']"/></router-link>
+        </div> 
 
     </div>
         <article>
@@ -64,7 +68,7 @@
                                 <td>{{ revenue.transactionDesc }}</td>
                                 <td>{{ revenue.revenuetype.revenuetype }}</td>
                                 <td></td>
-                                <td class="amount" style="color: #3273dc;">+{{ revenue.transactionAmount | toCurrency }}</td>
+                                <td class="amount">+{{ revenue.transactionAmount | toCurrency }}</td>
                             </tr>
                             <tr class="table-total-row">
                                 <td></td>
@@ -223,6 +227,7 @@ article {
 
 .amount {
     text-align: right;
+    color: #3273dc;
 }
 
 .table-total-row {
@@ -262,6 +267,7 @@ border-top-color: #3273dc;
 
 #expenses-revenues {
     grid-column: 1 / span 2;
+    grid-row: 2 / span 3;
     width: 100%;
     align-items: left;
 }
@@ -279,6 +285,10 @@ border-top-color: #3273dc;
     object-fit: cover;
     position: relative;
     margin-top: 0;
+}
+
+#cam {
+    color: #666666;
 }
 
 /* #iphone11-main {

@@ -53,6 +53,8 @@
           <router-link class="navbar-item" to="/wood">Wood Inventory</router-link>
 
           <router-link class="navbar-item" to="/shoppinglist">Shopping List</router-link>
+
+          <router-link class="navbar-item" to="/woodprices">Wood Prices</router-link>
           
         </div>
       </div>

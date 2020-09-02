@@ -21,7 +21,7 @@
         <tbody>
             <tr v-for="woodprice in woodprices" :key="woodprice.id">
               <td>{{ woodprice.id }}</td>
-              <td>{{ woodprice.woodtype.woodThickness }} {{ woodprice.woodtype.woodSize }} {{ woodprice.woodtype.woodType }} {{ woodprice.woodtype.woodVariety }}</td>
+              <td>{{ woodprice.woodtype.woodThickness }} {{ woodprice.woodtype.woodSize }} {{ woodprice.woodtype.woodspecies.woodType }} {{ woodprice.woodtype.woodVariety }}</td>
               <td>{{ woodprice.pricePerUnit | toCurrency }}</td>
               <td>{{ woodprice.unitType }}</td>
               <td>{{ woodprice.location.locationName }}</td>

@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.aim.carpentry.woodspecies.WoodSpecies;
 
 @Entity
 @Table(name = "wood_types")
@@ -16,8 +20,9 @@ public class WoodType {
     @Column(name = "wood_type_id")
     private Integer id;
 
-    @Column(name = "wood_type")
-    private String woodType;
+    @ManyToOne
+    @JoinColumn(name = "wood_species_id", nullable = false)
+    private WoodSpecies woodspecies;
 
     @Column(name = "variety")
     private String woodVariety;
@@ -36,13 +41,7 @@ public class WoodType {
         this.id = id;
     }
 
-    public String getWoodType() {
-        return woodType;
-    }
-
-    public void setWoodType(String woodType) {
-        this.woodType = woodType;
-    }
+    
 
     public String getWoodVariety() {
         return woodVariety;
@@ -68,7 +67,14 @@ public class WoodType {
         this.woodSize = woodSize;
     }
 
-    
+    public WoodSpecies getWoodspecies() {
+        return woodspecies;
+    }
+
+    public void setWoodspecies(WoodSpecies woodspecies) {
+        this.woodspecies = woodspecies;
+    }
+
 
     }
 

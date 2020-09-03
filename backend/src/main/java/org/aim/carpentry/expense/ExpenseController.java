@@ -1,5 +1,6 @@
 package org.aim.carpentry.expense;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,22 +40,14 @@ public class ExpenseController {
     }
 
     @PostMapping(path = "/")
-    public @ResponseBody String createExpense(@RequestBody Expense expense) {
-        expenseRepository.save(expense);
+    public @ResponseBody String createExpense(@RequestBody List<Expense> expenses) {
+        expenseRepository.saveAll(expenses);
         return "Saved";
     }
 
     @PutMapping(path = "/{id}")
-    public @ResponseBody String updateExpense(@PathVariable(value = "id") Integer id, @RequestBody Expense expenseDetails) {
-        Optional<Expense> optionalExpense = expenseRepository.findById(id);
-        Expense expense = optionalExpense.get();
+    public @ResponseBody String updateExpense(@PathVariable(value = "id") Integer id, @RequestBody Expense expense) {
 
-        expense.setTransactionDate(expenseDetails.getTransactionDate());
-        expense.setTransactionDesc(expenseDetails.getTransactionDesc());
-        expense.setLocation(expenseDetails.getLocation());
-        expense.setTransactionAmount(expenseDetails.getTransactionAmount());
-        expense.setExpensetype(expenseDetails.getExpensetype());
-        expense.setProject(expenseDetails.getProject());
         expenseRepository.save(expense);
 
         return "Updated";

@@ -32,7 +32,7 @@ Vue.use(VueRouter)
   {path: '/expense', name:'Add Expense', component: () => import('../views/AddExpense.vue')},
   {path: '/revenue', name:'Add Revenue', component: () => import('../views/AddRevenue.vue')},
   {path: '/settings', name:'Settings', component: () => import('../views/Settings.vue')},
-  {path: '/profile', name:'Profile', component: () => import('../views/Profile.vue')},
+  {path: '/userprofile', name:'Profile', component: () => import('../views/Settings.vue')},
   {path: '/rates', name:'Rates', component: () => import('../views/Rates.vue')},
   {path: '/markup', name:'Markup', component: () => import('../views/Markup.vue')},
   {path: '/display', name:'Display', component: () => import('../views/Display.vue')},

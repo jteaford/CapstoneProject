@@ -26,6 +26,9 @@ public class Expense {
     @Column(name= "expense_id")
     private Integer id;
 
+    @Column(name="transaction_id")
+    private String transactionId;
+
     @Column(name="date_of_transaction")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date transactionDate;
@@ -115,6 +118,16 @@ public class Expense {
     public void setItemQuantity(Integer itemQuantity) {
         this.itemQuantity = itemQuantity;
     }
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    
 
     
 

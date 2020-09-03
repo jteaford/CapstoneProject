@@ -5,13 +5,24 @@
 
         <div class="field">
             <label class="label">Client</label>
-            <div class="select">
+
+            <autocomplete
+                source="http://localhost:8080/api/clients/search/"
+                results-property="clients"
+                :results-display="clientName"
+                v-model="project.client.id"
+                class="field"
+                inputClass="input">
+            </autocomplete>
+
+            <!-- <div class="select">
                 <select v-model="project.client.id">
                     <option v-for="client in clients" :value="client.id" :key="client.id">
                         {{ client.firstName }} {{ client.lastName }}
                     </option>
                 </select>
-            </div>
+            </div> -->
+
         </div>
         
         <div class="field">
@@ -74,6 +85,7 @@ export default {
     methods: {
         async save() {
             // save project, that project object (data.project) will be sent
+            console.log('AddProject.save() client=', JSON.parse(JSON.stringify(this.project.client)));
             const response = await this.$http.post('http://localhost:8080/api/projects/', this.project);
             console.log(response);
             if (response.status === 200) {
@@ -83,7 +95,10 @@ export default {
         cancel() {
             this.$router.push({path: '/projects'});
         },
-      
+        clientName(client) {
+            let clientName = '(' + client.clientCode + ') ' + client.firstName + ' ' + client.lastName;
+            return clientName;
+        },
         async getStatuses() {
             const { data } = await this.$http.get('http://localhost:8080/api/statuses/');
             console.log('getStatuses() data', data)
@@ -122,5 +137,9 @@ export default {
     
     .input, .textarea {
     width: 50%;
-}
+    }
+
+    .autocomplete__box {
+        max-width: 50%;
+    }
 </style>

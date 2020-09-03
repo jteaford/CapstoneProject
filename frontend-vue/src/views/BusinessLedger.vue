@@ -58,7 +58,7 @@
               </table>
             </tr>
           </template>
-          
+
           <tr v-for="revenue in revenues" :key="revenue.id">
             <td>{{ revenue.transactionDate }}</td>
             <td>{{ revenue.transactionDesc }}</td>
@@ -109,13 +109,13 @@ export default {
           transaction.transactionDate = expense.transactionDate;
           transaction.location = expense.location;
           transaction.expenses = [];
+          this.transactions.push(transaction);
         }
 
         transaction.total = transaction.total
           ? (transaction.total += expense.transactionAmount)
           : expense.transactionAmount;
         transaction.expenses.push(expense);
-        this.transactions.push(transaction);
       }
     });
 

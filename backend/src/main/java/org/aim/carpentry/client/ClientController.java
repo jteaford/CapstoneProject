@@ -32,6 +32,11 @@ public class ClientController {
         return client.get();
     }
 
+    @GetMapping(path = "/search/{keyword}")
+     public @ResponseBody Iterable<Client> search(@PathVariable (value = "keyword") String keyword) {
+         return clientRepository.search(keyword);
+     }
+
     @PostMapping(path = "/")
     public @ResponseBody String createClient(@RequestBody Client client) {
         clientRepository.save(client);

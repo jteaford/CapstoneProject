@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <div class="field is-narrow">
+        <!-- <div class="field is-narrow">
             <label class="label">Project</label>
             <div class="select">
                 <select v-model="expense.project" placeholder="Select Project">
@@ -73,6 +73,20 @@
                     </option>
                 </select>
             </div>
+        </div> -->
+
+        <div class="field is-narrow">
+            <label class="label">Project</label>
+
+            <autocomplete
+                source="http://localhost:8080/api/projects/search/"
+                results-property="projects"
+                :results-display="projectName"
+                v-model="expense.project.id"
+                class="field"
+                inputClass="input">
+            </autocomplete>
+
 
             
         </div>
@@ -139,6 +153,10 @@ export default {
         cancel() {
             this.$router.push({path: '/ledger'});
         },
+        projectName(project) {
+            let projectName = '(' + project.projectCode + ') ' + project.projectDescription;
+            return projectName;
+        },
         async add() {
             console.log('Add=', this.expense);
             this.expenses.push(JSON.parse(JSON.stringify(this.expense)));
@@ -149,6 +167,7 @@ export default {
             this.expense.project={};
         },
         async save() {
+            console.log('AddProject.save() client=', JSON.parse(JSON.stringify(this.project)));
             console.log('Save=', this.expense);
             const response = await this.$http.post('http://localhost:8080/api/expenses/', this.expenses);
             console.log(response);

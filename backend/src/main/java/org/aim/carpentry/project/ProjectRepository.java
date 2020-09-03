@@ -11,4 +11,8 @@ public interface ProjectRepository extends CrudRepository<Project, Integer>{
     @Modifying(clearAutomatically = true)
     @Query("UPDATE Project p SET p.status.id = :statusId WHERE p.id = :id")
     int updateStatus(@Param("id") int id, @Param("statusId") Integer statusId);
+
+    @Query(value="select p.* from projects p where p.project_code like %?1% OR p.project_desc like %?1%",
+     nativeQuery = true)
+     Iterable<Project> search(@Param("keyword") String keyword);
 }

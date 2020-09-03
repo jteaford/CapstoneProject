@@ -34,6 +34,12 @@ public class ProjectController {
         return project.get();
     }
 
+    @GetMapping(path = "/search/{keyword}")
+     public @ResponseBody Iterable<Project> search(@PathVariable (value = "keyword") String keyword) {
+         return projectRepository.search(keyword);
+     }
+
+
     @PutMapping(path = "/{id}")
     public @ResponseBody String updateProject(@PathVariable(value = "id") Integer id, @RequestBody Project projectDetails) {
         Optional<Project> optionalProject = projectRepository.findById(id);

@@ -3,10 +3,13 @@ import App from './App.vue'
 import router from './router'
 import axios from 'axios'
 import moment from 'moment'
+import Autocomplete from 'vuejs-auto-complete'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCog, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+Vue.component('autocomplete', Autocomplete);
 
 library.add(faCog, faUser)
 

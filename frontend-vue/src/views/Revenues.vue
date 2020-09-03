@@ -43,17 +43,17 @@ export default {
     data: () => ({ 
       revenues: [] 
     }),
+    methods: {
+      revenueDetail(revenueId) {
+          this.$router.push('revenues/' + revenueId);
+      }
+    },
         async mounted() {
             console.log('revenues mounted begin');
             const { data } = await this.$http.get('http://localhost:8080/api/revenues');
             console.log('revenues mounted data', data);
             this.revenues = data;
-        },
-    methods: {
-      revenueDetail(revenue) {
-          this.$router.push('revenue/' + revenue);
-      }
-    },
+        }
 }
 </script>
 

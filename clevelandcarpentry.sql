@@ -201,7 +201,7 @@ insert into revenues (date_of_transaction, transaction_description, revenue_type
 
 create table expenses (
 expense_id INT AUTO_INCREMENT PRIMARY KEY,
-transaction_id INT,
+transaction_id VARCHAR(13),
 date_of_transaction DATE,
 transaction_description VARCHAR(250) NOT NULL,
 location_id INT,
@@ -215,132 +215,132 @@ item_quantity INT,
 board_feet_quantity INT
 );
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-08-31', 'Band Saw', 5, 349.99, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-08-31', 'WR 3n1 Trammel Set', 5, 30.99, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-08-31', 'Tax', 5, 26.45, 4);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200831-01', '2020-08-31', 'Band Saw', 5, 349.99, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200831-01', '2020-08-31', 'WR 3n1 Trammel Set', 5, 30.99, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200831-01', '2020-08-31', 'Tax', 5, 26.45, 4);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-07-23', '1/2 4x8 Sheet Sande Plywood', 4, 71.90, 1, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-07-23', 'Tapcon 3/16x1-3/4 Phillips, 25 PK', 4, 13.16, 3, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-23', 'Tax', 4, 5.95, 4);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200723-02', '2020-07-23', '1/2 4x8 Sheet Sande Plywood', 4, 71.90, 1, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200723-02', '2020-07-23', 'Tapcon 3/16x1-3/4 Phillips, 25 PK', 4, 13.16, 3, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200723-02', '2020-07-23', 'Tax', 4, 5.95, 4);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-02', '1lb Construction Screw 1-5/8-IN', 1, 7.98, 3);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-02', 'BSH 3/4-IN x 3/4-IN Hinge', 1, 17.97, 3);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-06-02', 'Irwin 1/2-IN Pipe Clamp', 1, 25.94, 2, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-06-02', '1-12-8 Utility Shelf Board', 1, 30.96, 1, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-06-02', '1/2IN x 72IN Black Iron Pipe', 1, 24.10, 3, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-02', '1-4-8 2 TC Whitewood Boar', 1, 4.72, 1);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-02', 'Tax', 1, 7.82, 4);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200602-03', '2020-06-02', '1lb Construction Screw 1-5/8-IN', 1, 7.98, 3);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200602-03', '2020-06-02', 'BSH 3/4-IN x 3/4-IN Hinge', 1, 17.97, 3);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200602-03', '2020-06-02', 'Irwin 1/2-IN Pipe Clamp', 1, 25.94, 2, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200602-03', '2020-06-02', '1-12-8 Utility Shelf Board', 1, 30.96, 1, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200602-03', '2020-06-02', '1/2IN x 72IN Black Iron Pipe', 1, 24.10, 3, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200602-03', '2020-06-02', '1-4-8 2 TC Whitewood Boar', 1, 4.72, 1);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200602-03', '2020-06-02', 'Tax', 1, 7.82, 4);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-08-06', 'BSH 4 1/2IN ECLN WD T-SHK', 1, 10.98, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-08-06', 'Bosch 6.5-AMP Top Handle Jigsaw', 1, 119.00, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-08-06', 'Tax', 1, 9.10, 4);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200806-04', '2020-08-06', 'BSH 4 1/2IN ECLN WD T-SHK', 1, 10.98, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200806-04', '2020-08-06', 'Bosch 6.5-AMP Top Handle Jigsaw', 1, 119.00, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200806-04', '2020-08-06', 'Tax', 1, 9.10, 4);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-31', 'Gallon D16W151 Cashmere', 6, 37.23, 5);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-31', 'QT SW PLAS RATIO CON', 6, 1.27, 5);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-31', '2IN 2 Clearcut Elite Bow', 6, 13.42, 5);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-31', '2IN 2 XL-CUB', 6, 13.85, 5);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-31', 'Tax', 6, 3.62, 4);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200731-05', '2020-07-31', 'Gallon D16W151 Cashmere', 6, 37.23, 5);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200731-05', '2020-07-31', 'QT SW PLAS RATIO CON', 6, 1.27, 5);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200731-05', '2020-07-31', '2IN 2 Clearcut Elite Bow', 6, 13.42, 5);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200731-05', '2020-07-31', '2IN 2 XL-CUB', 6, 13.85, 5);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200731-05', '2020-07-31', 'Tax', 6, 3.62, 4);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-08-01', 'GF Exterior 450 Satin Qt', 5, 24.99, 5);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-08-01', 'Round Over Bit 5/32 1/4SH', 5, 30.47, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-08-01', 'White China Brush 2.5IN', 5, 12.99, 5);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-08-01', 'Painters Pyramids 4 Grabbers 4', 5, 6.99, 5);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-08-01', 'Tax', 5, 5.28, 4);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200801-06', '2020-08-01', 'GF Exterior 450 Satin Qt', 5, 24.99, 5);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200801-06', '2020-08-01', 'Round Over Bit 5/32 1/4SH', 5, 30.47, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200801-06', '2020-08-01', 'White China Brush 2.5IN', 5, 12.99, 5);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200801-06', '2020-08-01', 'Painters Pyramids 4 Grabbers 4', 5, 6.99, 5);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200801-06', '2020-08-01', 'Tax', 5, 5.28, 4);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-06-11', 'Minwax 8 oz. Pickled Oak', 1, 9.96, 5, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-11', 'Zinsser QT Clear Shellac', 1, 14.98, 5);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-11', 'GTR P 5IN 8-H H/L Disc 2', 1, 7.98, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-11', 'Tax', 1, 2.30, 4);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200611-07', '2020-06-11', 'Minwax 8 oz. Pickled Oak', 1, 9.96, 5, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200611-07', '2020-06-11', 'Zinsser QT Clear Shellac', 1, 14.98, 5);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200611-07', '2020-06-11', 'GTR P 5IN 8-H H/L Disc 2', 1, 7.98, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200611-07', '2020-06-11', 'Tax', 1, 2.30, 4);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-13', '48-IN Adjustable T-Square', 1, 26.98, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-13', 'TPN 75CT 3/16IN x 1-1/4IN', 1, 13.48, 3);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-13', 'KBLT 27-CT Multi SD Set', 1, 14.96, 3);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-13', 'Tax', 1, 3.88, 4);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200713-08', '2020-07-13', '48-IN Adjustable T-Square', 1, 26.98, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200713-08', '2020-07-13', 'TPN 75CT 3/16IN x 1-1/4IN', 1, 13.48, 3);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200713-08', '2020-07-13', 'KBLT 27-CT Multi SD Set', 1, 14.96, 3);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200713-08', '2020-07-13', 'Tax', 1, 3.88, 4);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-04', 'Jet Mortise Machine', 5, 339.99, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-04', 'Mortising Bit and Chisel 1/2"', 5, 19.99, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-07-17', 'Self-Close OLVY Hinge', 1, 17.88, 3, 6);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-07-17', 'Powerpro One EXT XL #6 X', 1, 5.16, 3, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-17', 'TPN 25-CT 3/16 X 2-1/4IN', 1, 7.58, 3);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-17', '5/32IN X 5-1/2IN BI', 1, 5.98, 3);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-17', 'Tax', 1, 2.56, 4);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200604-09', '2020-06-04', 'Jet Mortise Machine', 5, 339.99, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200604-09', '2020-06-04', 'Mortising Bit and Chisel 1/2"', 5, 19.99, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200604-09', '2020-07-17', 'Self-Close OLVY Hinge', 1, 17.88, 3, 6);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200604-09', '2020-07-17', 'Powerpro One EXT XL #6 X', 1, 5.16, 3, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200604-09', '2020-07-17', 'TPN 25-CT 3/16 X 2-1/4IN', 1, 7.58, 3);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200604-09', '2020-07-17', '5/32IN X 5-1/2IN BI', 1, 5.98, 3);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200604-09', '2020-07-17', 'Tax', 1, 2.56, 4);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-19', '1/2 4x8 MDF PNL', 4, 20.96, 1);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-07-19', '1/2 4x8 Sheet Sande Plywood', 4, 143.80, 1, 4);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-07-19', '1/4 4x8 Sheet Sande Plywood', 4, 45.84, 1, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-07-19', '1-1/4" Gold Screw 1lb', 4, 8.20, 3, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-19', 'Tax', 4, 15.32, 4);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200719-10', '2020-07-19', '1/2 4x8 MDF PNL', 4, 20.96, 1);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200719-10', '2020-07-19', '1/2 4x8 Sheet Sande Plywood', 4, 143.80, 1, 4);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200719-10', '2020-07-19', '1/4 4x8 Sheet Sande Plywood', 4, 45.84, 1, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200719-10', '2020-07-19', '1-1/4" Gold Screw 1lb', 4, 8.20, 3, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200719-10', '2020-07-19', 'Tax', 4, 15.32, 4);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-07-24', 'Self-Close OLVY Hinge 2-P', 1, 14.90, 3, 5);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-24', 'TPN 25-CT 3/16 X 2-3/4IN', 1, 8.98, 3);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-24', 'Tax', 1, 1.67, 4);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200724-11', '2020-07-24', 'Self-Close OLVY Hinge 2-P', 1, 14.90, 3, 5);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200724-11', '2020-07-24', 'TPN 25-CT 3/16 X 2-3/4IN', 1, 8.98, 3);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200724-11', '2020-07-24', 'Tax', 1, 1.67, 4);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-28', '1-Gal Titebond III Ult Wood Glue', 1, 28.98, 5);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-28', 'Titebond Wood Glue Applicator', 1, 3.38, 5);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-07-28', '1/4-IN USS STP Nut', 1, 2.97, 3, 9);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-07-28', 'HM 1-CT 1/4IN-20 x 4IN CA', 1, 13.86, 3, 9);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-07-28', 'HM 1-CT 1/4-IN SS Flat WA', 1, 1.98, 3, 9);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-28', '3M Asst Grit 8CT 1/3 Shee', 1, 6.98, 6);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-28', '1lb Ext Screw PGP 1-5/8 IN', 1, 9.48, 3);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-07-28', 'Project Source Mini Roller', 1, 3.76, 5, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-28', 'WRNR 3-IN Flex Putty Knife', 1, 7.98, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-07-28', 'Tax', 1, 6.25, 4);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200728-12', '2020-07-28', '1-Gal Titebond III Ult Wood Glue', 1, 28.98, 5);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200728-12', '2020-07-28', 'Titebond Wood Glue Applicator', 1, 3.38, 5);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200728-12', '2020-07-28', '1/4-IN USS STP Nut', 1, 2.97, 3, 9);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200728-12', '2020-07-28', 'HM 1-CT 1/4IN-20 x 4IN CA', 1, 13.86, 3, 9);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200728-12', '2020-07-28', 'HM 1-CT 1/4-IN SS Flat WA', 1, 1.98, 3, 9);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200728-12', '2020-07-28', '3M Asst Grit 8CT 1/3 Shee', 1, 6.98, 6);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200728-12', '2020-07-28', '1lb Ext Screw PGP 1-5/8 IN', 1, 9.48, 3);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200728-12', '2020-07-28', 'Project Source Mini Roller', 1, 3.76, 5, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200728-12', '2020-07-28', 'WRNR 3-IN Flex Putty Knife', 1, 7.98, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200728-12', '2020-07-28', 'Tax', 1, 6.25, 4);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-23', 'TPN 8CT 1/4-IN x 2-1/4-IN', 1, 5.28, 3);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-23', 'TPN 8CT 1/4-IN x 1-3/4-IN', 1, 4.98, 3);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-23', 'BSH LBHX 1/4-IN x 6-IN', 1, 4.48, 3);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-23', '40-FT 16/3 Green Outdoor', 1, 12.97, 6);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-23', '360Pro 5-Outlet Power Hub', 1, 17.48, 6);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-23', 'Tax', 1, 5.26, 4);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200623-13', '2020-06-23', 'TPN 8CT 1/4-IN x 2-1/4-IN', 1, 5.28, 3);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200623-13', '2020-06-23', 'TPN 8CT 1/4-IN x 1-3/4-IN', 1, 4.98, 3);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200623-13', '2020-06-23', 'BSH LBHX 1/4-IN x 6-IN', 1, 4.48, 3);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200623-13', '2020-06-23', '40-FT 16/3 Green Outdoor', 1, 12.97, 6);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200623-13', '2020-06-23', '360Pro 5-Outlet Power Hub', 1, 17.48, 6);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200623-13', '2020-06-23', 'Tax', 1, 5.26, 4);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity, project_id) values ('2020-08-31', 'HM 1-CT 1/4IN 20 x 2-1/2IN', 1, 19.50, 3, 25, 22);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-08-31', 'Tax', 1, 1.37, 4, 22);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity, project_id) values ('20200831-14', '2020-08-31', 'HM 1-CT 1/4IN 20 x 2-1/2IN', 1, 19.50, 3, 25, 22);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200831-14', '2020-08-31', 'Tax', 1, 1.37, 4, 22);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('2020-08-31', 'Pony Band Clamp', 1, 19.98, 2, 25);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity, project_id) values ('2020-08-31', '88CT Trim Screw SS 1-5/8', 1, 25.96, 3, 2, 22);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-08-31', '88CT Deck Screw SS 2 IN', 1, 12.98, 3, 22);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity, project_id) values ('2020-08-31', 'HM 1-CT 5/16IN-18 x 3IN', 1, 37.00, 3, 25, 22);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity, project_id) values ('2020-08-31', '3/8-IN USS Fin Nut', 1, 45.00, 3, 100, 22);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity, project_id) values ('2020-08-31', 'HM 1-CT 3/8-IN Flat Washer', 1, 27.00, 3, 100, 22);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity, project_id) values ('2020-08-31', 'HM 1-CT 1/4-IN SS Flat Washer', 1, 21.00, 3, 100, 22);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-08-31', 'Tax', 1, 13.22, 4, 22);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity) values ('20200831-15', '2020-08-31', 'Pony Band Clamp', 1, 19.98, 2, 25);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity, project_id) values ('20200831-15', '2020-08-31', '88CT Trim Screw SS 1-5/8', 1, 25.96, 3, 2, 22);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200831-15', '2020-08-31', '88CT Deck Screw SS 2 IN', 1, 12.98, 3, 22);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity, project_id) values ('20200831-15', '2020-08-31', 'HM 1-CT 5/16IN-18 x 3IN', 1, 37.00, 3, 25, 22);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity, project_id) values ('20200831-15', '2020-08-31', '3/8-IN USS Fin Nut', 1, 45.00, 3, 100, 22);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity, project_id) values ('20200831-15', '2020-08-31', 'HM 1-CT 3/8-IN Flat Washer', 1, 27.00, 3, 100, 22);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, item_quantity, project_id) values ('20200831-15', '2020-08-31', 'HM 1-CT 1/4-IN SS Flat Washer', 1, 21.00, 3, 100, 22);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200831-15', '2020-08-31', 'Tax', 1, 13.22, 4, 22);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id, board_feet_quantity) values ('2020-08-28', '5/4 Oak White F1F', 3, 498.75, 1, 22, 105);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-08-28', 'Tax', 3, 34.91, 4, 22);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id, board_feet_quantity) values ('20200828-16', '2020-08-28', '5/4 Oak White F1F', 3, 498.75, 1, 22, 105);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200828-16', '2020-08-28', 'Tax', 3, 34.91, 4, 22);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id, board_feet_quantity) values ('2020-06-25', '8/4 Oak White QRTD SEL&BTR', 3, 122.18, 1, 17, 13);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id, board_feet_quantity) values ('2020-06-25', '4/4 Oak White QRTD SEL&BTR', 3, 35.40, 1, 17, 6);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-06-25', 'Tax', 3, 11.03, 4, 17);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id, board_feet_quantity) values ('20200625-17', '2020-06-25', '8/4 Oak White QRTD SEL&BTR', 3, 122.18, 1, 17, 13);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id, board_feet_quantity) values ('20200625-17', '2020-06-25', '4/4 Oak White QRTD SEL&BTR', 3, 35.40, 1, 17, 6);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200625-17', '2020-06-25', 'Tax', 3, 11.03, 4, 17);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id, board_feet_quantity) values ('2020-07-01', '4/4 Oak White QRTD SEL&BTR', 3, 70.80, 1, 17, 12);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-07-01', '1/4 Birch SW A1 MDF', 3, 58.82, 1, 17);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-07-01', 'Tax', 3, 9.07, 4, 17);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id, board_feet_quantity) values ('20200701-18', '2020-07-01', '4/4 Oak White QRTD SEL&BTR', 3, 70.80, 1, 17, 12);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200701-18', '2020-07-01', '1/4 Birch SW A1 MDF', 3, 58.82, 1, 17);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200701-18', '2020-07-01', 'Tax', 3, 9.07, 4, 17);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id, board_feet_quantity) values ('2020-07-24', '4/4 Oak White Rift SEL&BTR', 3, 249.00, 1, 19, 30);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, board_feet_quantity) values ('2020-07-24', '8/4 Maple Hard 1,2 White SEL&BTR', 3, 39.00, 1, 10);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-07-24', 'Tax', 3, 20.16, 1, 19);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id, board_feet_quantity) values ('20200724-19', '2020-07-24', '4/4 Oak White Rift SEL&BTR', 3, 249.00, 1, 19, 30);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, board_feet_quantity) values ('20200724-19', '2020-07-24', '8/4 Maple Hard 1,2 White SEL&BTR', 3, 39.00, 1, 10);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200724-19', '2020-07-24', 'Tax', 3, 20.16, 1, 19);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id, item_quantity) values ('2020-06-30', '1x6x10 Poplar Board', 1, 56.00, 1, 17, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-06-30', 'Tax', 1, 3.96, 4, 17);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id, item_quantity) values ('20200630-20', '2020-06-30', '1x6x10 Poplar Board', 1, 56.00, 1, 17, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200630-20', '2020-06-30', 'Tax', 1, 3.96, 4, 17);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id, item_quantity) values ('2020-06-24', '12.25-FL OZ Minwax Satin LA', 1, 19.36, 5, 11, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-06-24', 'TPN 5/32-IN x 4-1/2-IN CN', 1, 5.48, 3, 11);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-06-24', '3/4-2x4 Maple Plywood', 1, 26.98, 1, 11);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-24', 'Hammer Drill', 1, 59.98, 2);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-24', 'Tax', 1, 7.83, 4);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id, item_quantity) values ('20200624-21', '2020-06-24', '12.25-FL OZ Minwax Satin LA', 1, 19.36, 5, 11, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200624-21', '2020-06-24', 'TPN 5/32-IN x 4-1/2-IN CN', 1, 5.48, 3, 11);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200624-21', '2020-06-24', '3/4-2x4 Maple Plywood', 1, 26.98, 1, 11);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200624-21', '2020-06-24', 'Hammer Drill', 1, 59.98, 2);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200624-21', '2020-06-24', 'Tax', 1, 7.83, 4);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-06-12', 'Frog 48MM Delicate Surface Tape', 4, 8.97, 6, 12);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-06-12', '1 Quart Paint Stick', 4, 0.98, 5, 12);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-06-12', 'Vara 3x Stain Oil Flagstone QT', 4, 8.98, 5, 12);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-06-12', 'Tax', 4, 1.33, 4, 12);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200612-22', '2020-06-12', 'Frog 48MM Delicate Surface Tape', 4, 8.97, 6, 12);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200612-22', '2020-06-12', '1 Quart Paint Stick', 4, 0.98, 5, 12);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200612-22', '2020-06-12', 'Vara 3x Stain Oil Flagstone QT', 4, 8.98, 5, 12);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200612-22', '2020-06-12', 'Tax', 4, 1.33, 4, 12);
 
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-06-25', 'Energizer Max AAA30', 4, 16.98, 6, 17);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-06-25', 'Diablo 10"x40T General Purpose', 4, 29.97, 6, 17);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-06-25', '3/4 4x8 Birch Plywood', 4, 55.98, 1, 17);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-06-25', 'Weldwood Contact Cement', 4, 13.98, 6, 17);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('2020-06-25', 'Titebond Wood Glue 16 OZ', 4, 5.97, 5);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-06-25', 'Bondo 262 Body Filler 1 QT', 4, 8.32, 6, 17);
-insert into expenses (date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('2020-06-25', 'Tax', 4, 9.18, 4, 17);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200625-23', '2020-06-25', 'Energizer Max AAA30', 4, 16.98, 6, 17);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200625-23', '2020-06-25', 'Diablo 10"x40T General Purpose', 4, 29.97, 6, 17);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200625-23', '2020-06-25', '3/4 4x8 Birch Plywood', 4, 55.98, 1, 17);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200625-23', '2020-06-25', 'Weldwood Contact Cement', 4, 13.98, 6, 17);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id) values ('20200625-23', '2020-06-25', 'Titebond Wood Glue 16 OZ', 4, 5.97, 5);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200625-23', '2020-06-25', 'Bondo 262 Body Filler 1 QT', 4, 8.32, 6, 17);
+insert into expenses (transaction_id, date_of_transaction, transaction_description, location_id, transaction_amount, expense_type_id, project_id) values ('20200625-23', '2020-06-25', 'Tax', 4, 9.18, 4, 17);
 
 select * from locations;
 select * from projects;

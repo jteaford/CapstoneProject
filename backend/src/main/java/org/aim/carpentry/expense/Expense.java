@@ -27,7 +27,7 @@ public class Expense {
     private Integer id;
 
     @Column(name="transaction_id")
-    private Integer transactionId;
+    private String transactionId;
 
     @Column(name="date_of_transaction")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -119,13 +119,15 @@ public class Expense {
         this.itemQuantity = itemQuantity;
     }
 
-    public Integer getTransactionId() {
+    public String getTransactionId() {
         return transactionId;
     }
 
-    public void setTransactionId(Integer transactionId) {
+    public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
+
+    
 
     
 

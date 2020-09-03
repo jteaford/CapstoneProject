@@ -13,40 +13,52 @@
           <tr>
             <th>Date</th>
             <th>Description</th>
+            <th></th>
+            <th></th>
             <th>Total</th>
           </tr>
         </thead>
         <tbody>
           <template v-for="transaction in transactions">
-          <tr :key="transaction.id">
-            <td>{{ transaction.transactionDate }}</td>
-            <td>{{ transaction.location.locationName }}</td>
-            <td class="amount" style="color: #ca4040;">-{{ transaction.total | toCurrency }}</td>
-          </tr>
+            <tr :key="transaction.id">
+              <td>{{ transaction.transactionDate }}</td>
+              <td>{{ transaction.location.locationName }}</td>
+              <td></td>
+              <td></td>
+              <td class="amount" style="color: #ca4040;">-{{ transaction.total | toCurrency }}</td>
+            </tr>
 
-          <tr :key="transaction.id"> 
-            <table id="expenses" class="table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Description</th>
-            <th>Revenue Type</th>
-            <th>Expense Type</th>
-            <th>Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="expense in transaction.expenses" :key="expense.id">
-            <td>{{ expense.transactionDate }}</td>
-            <td>{{ expense.transactionDesc }}<strong> - </strong>{{ expense.location.locationName }}</td>
-            <td></td>
-            <td>{{ expense.expensetype.expensetype }}</td>
-            <td class="amount" style="color: #ca4040;">-{{ expense.transactionAmount | toCurrency }}</td>
-          </tr>
-        </tbody>
-      </table>
-          </tr>
+            <tr :key="transaction.id">
+              <table id="expenses" class="table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Revenue Type</th>
+                    <th>Expense Type</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="expense in transaction.expenses" :key="expense.id">
+                    <td>{{ expense.transactionDate }}</td>
+                    <td>
+                      {{ expense.transactionDesc }}
+                      <strong>-</strong>
+                      {{ expense.location.locationName }}
+                    </td>
+                    <td></td>
+                    <td>{{ expense.expensetype.expensetype }}</td>
+                    <td
+                      class="amount"
+                      style="color: #ca4040;"
+                    >-{{ expense.transactionAmount | toCurrency }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </tr>
           </template>
+          
           <tr v-for="revenue in revenues" :key="revenue.id">
             <td>{{ revenue.transactionDate }}</td>
             <td>{{ revenue.transactionDesc }}</td>
@@ -63,8 +75,7 @@
             <td></td>
             <td class="table-total">Total:</td>
             <td></td>
-          </tr> -->
-
+      </tr>-->
     </div>
   </div>
 </template>
@@ -75,7 +86,7 @@ export default {
   data: () => ({
     expenses: [],
     revenues: [],
-    transactions: []
+    transactions: [],
   }),
   methods: {
     expenseDetail(expenseId) {
@@ -87,25 +98,28 @@ export default {
     const { data } = await this.$http.get("http://localhost:8080/api/expenses");
     console.log("expenses mounted data", data);
     this.expenses = data;
-    this.expenses.forEach(expense => {
+    this.expenses.forEach((expense) => {
       if (expense.transactionId) {
+        let transaction = this.transactions.find(
+          (transaction) => transaction.id === expense.transactionId
+        );
+        if (!transaction) {
+          transaction = {};
+          transaction.id = expense.transactionId;
+          transaction.transactionDate = expense.transactionDate;
+          transaction.location = expense.location;
+          transaction.expenses = [];
+        }
 
-      let transaction = this.transactions.find(transaction => transaction.id === expense.transactionId);
-      if (!transaction) {
-        transaction = {};
-        transaction.id = expense.transactionId;
-        transaction.transactionDate = expense.transactionDate;
-        transaction.location = expense.location;
-        transaction.expenses = [];
-      }
-      
-      transaction.total = transaction.total ? transaction.total += expense.transactionAmount : expense.transactionAmount;
-      transaction.expenses.push(expense);
-      this.transactions.push(transaction);
+        transaction.total = transaction.total
+          ? (transaction.total += expense.transactionAmount)
+          : expense.transactionAmount;
+        transaction.expenses.push(expense);
+        this.transactions.push(transaction);
       }
     });
-    
-    console.log('Transactions = ', this.transactions);
+
+    console.log("Transactions = ", this.transactions);
 
     const revenues = await this.$http.get(
       "http://localhost:8080/api/revenues/"
@@ -139,16 +153,17 @@ button {
 }
 
 .table-total-row {
-    background-color:rgba(50, 115, 220, 0.5);
+  background-color: rgba(50, 115, 220, 0.5);
 }
 
 .table-total {
-    color: #3273dc;
-    text-align: right;
-    font-weight: 600;
+  color: #3273dc;
+  text-align: right;
+  font-weight: 600;
 }
 
 table {
-border-top-color: #3273dc;
-} 
+  border-top-color: #3273dc;
+  width: 100%;
+}
 </style>

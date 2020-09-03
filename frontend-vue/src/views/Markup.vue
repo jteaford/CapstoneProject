@@ -8,12 +8,6 @@
             <li class="nav-item"><router-link to="/display">Display</router-link></li>
         </ul>
 
-        <div class="field"> 
-            <label class="label">Friend</label>
-            <div class="control">
-                <input class="input" type="text" v-model="referral.markup"/>
-            </div> 
-        </div>
     </div>
 </template>
 

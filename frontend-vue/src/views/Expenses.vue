@@ -15,9 +15,10 @@
             <th>Date</th>
             <th>Description</th>
             <th>Location</th>
-            <th>Amount</th>
             <th>Expense Type</th>
             <th>Project Code</th>
+            <th>Quantity</th>
+            <th>Amount</th>
           </tr>
         </thead>
         <tbody>
@@ -26,9 +27,10 @@
               <td>{{ expense.transactionDate }}</td>
               <td>{{ expense.transactionDesc }}</td>
               <td>{{ expense.location.locationName }} {{ expense.location.addressDesc }}</td>
-              <td>{{ expense.transactionAmount | toCurrency }}</td>
               <td>{{ expense.expensetype.expensetype }}</td>
               <td>{{ expense.project ? expense.project.projectCode : '' }}</td>
+              <td>{{ expense.itemQuantity }}</td>
+              <td>{{ expense.transactionAmount | toCurrency }}</td>
             </tr>
         </tbody>
       </table>
@@ -73,5 +75,9 @@ export default {
 
   .button.is-primary:hover {
     background-color: #666666;
+  }
+
+  .table {
+    margin-bottom: 100px;
   }
 </style>

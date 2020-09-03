@@ -16,7 +16,9 @@
             <th>Project</th>
             <th>Client</th>
             <th>Status</th>
-            <th>Project Number</th>
+            <th>Inquiry Date</th>
+            <th>Start Date</th>
+            <th>Completion Date</th>
           </tr>
         </thead>
 
@@ -33,7 +35,9 @@
                     </option>
                 </select></div>
               </td>
-              <td>{{ project.clientProjectNumber }}</td>
+              <td>{{ project.inquiryDate }}</td>
+              <td>{{ project.startDate }}</td>
+              <td>{{ project.completionDate }}</td>
             </tr>
         </tbody>
 

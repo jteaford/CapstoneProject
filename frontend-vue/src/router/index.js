@@ -28,8 +28,15 @@ Vue.use(VueRouter)
 
   {path: '/expenses', name:'Expenses', component: () => import('../views/Expenses.vue')},
   {path: '/revenues', name:'Revenues', component: () => import('../views/Revenues.vue')},
-  {path: '/ledger', name:'Business Ledger', component: () => import('../views/BusinessLedger.vue')}
-  
+  {path: '/ledger', name:'Business Ledger', component: () => import('../views/BusinessLedger.vue')},
+  {path: '/expense', name:'Add Expense', component: () => import('../views/AddExpense.vue')},
+  {path: '/revenue', name:'Add Revenue', component: () => import('../views/AddRevenue.vue')},
+  {path: '/settings', name:'Settings', component: () => import('../views/Settings.vue')},
+  {path: '/profile', name:'Profile', component: () => import('../views/Profile.vue')},
+  {path: '/rates', name:'Rates', component: () => import('../views/Rates.vue')},
+  {path: '/markup', name:'Markup', component: () => import('../views/Markup.vue')},
+  {path: '/display', name:'Display', component: () => import('../views/Display.vue')},
+  {path: '/woodprices', name:'Wood Prices', component: () => import('../views/WoodPrices.vue')}
 ]
 
 const router = new VueRouter({

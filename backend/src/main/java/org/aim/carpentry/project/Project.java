@@ -1,5 +1,7 @@
 package org.aim.carpentry.project;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import org.aim.carpentry.status.Status;
 import org.aim.carpentry.client.Client;
@@ -37,6 +41,18 @@ public class Project {
 
     @Column(name = "client_project_number")
     private Integer clientProjectNumber;
+
+    @Column(name="inquiry_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date inquiryDate;
+
+    @Column(name="start_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date startDate;
+
+    @Column(name="completion_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date completionDate;
 
     public Integer getId() {
         return id;
@@ -84,6 +100,30 @@ public class Project {
 
     public void setClientProjectNumber(Integer clientProjectNumber) {
         this.clientProjectNumber = clientProjectNumber;
+    }
+
+    public Date getInquiryDate() {
+        return inquiryDate;
+    }
+
+    public void setInquiryDate(Date inquiryDate) {
+        this.inquiryDate = inquiryDate;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getCompletionDate() {
+        return completionDate;
+    }
+
+    public void setCompletionDate(Date completionDate) {
+        this.completionDate = completionDate;
     }
 
 

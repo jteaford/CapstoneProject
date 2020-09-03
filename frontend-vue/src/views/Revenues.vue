@@ -16,8 +16,8 @@
             <th>Description</th>
             <th>Location</th>
             <th>Revenue Type</th>
-            <th>Amount</th>
-            <th>Project ID</th>
+            <th>Project Code</th>
+            <th class="amount-head">Amount</th>
           </tr>
         </thead>
         <tbody>
@@ -27,8 +27,8 @@
               <td>{{ revenue.transactionDesc }}</td>
               <td>{{ revenue.locationName }} {{ revenue.addressDesc }}</td>
               <td>{{ revenue.revenuetype.revenuetype }}</td>
-              <td>{{ revenue.transactionAmount | toCurrency }}</td>
               <td>{{ revenue.project ? revenue.project.projectCode : '' }}</td>
+              <td class="amount">{{ revenue.transactionAmount | toCurrency }}</td>
             </tr>
         </tbody>
       </table>
@@ -73,5 +73,14 @@ export default {
 
   .button.is-primary:hover {
     background-color: #666666;
+  }
+
+  .amount {
+    text-align: right;
+    color: #3273dc;
+}
+
+.table {
+    margin-bottom: 100px;
   }
 </style>

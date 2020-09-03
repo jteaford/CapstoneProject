@@ -48,6 +48,9 @@ public class Expense {
     @JoinColumn(name = "project_id")
     private Project project;
 
+    @Column(name="item_quantity")
+    private Integer itemQuantity;
+
     public Integer getId() {
         return id;
     }
@@ -103,6 +106,14 @@ public class Expense {
 
     public void setExpensetype(ExpenseType expensetype) {
         this.expensetype = expensetype;
+    }
+
+    public Integer getItemQuantity() {
+        return itemQuantity;
+    }
+
+    public void setItemQuantity(Integer itemQuantity) {
+        this.itemQuantity = itemQuantity;
     }
 
     

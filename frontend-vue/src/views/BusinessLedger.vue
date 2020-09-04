@@ -20,7 +20,7 @@
         </thead>
         <tbody>
           <template v-for="transaction in transactions">
-            <tr :key="transaction.id">
+            <tr @click="toggle(transaction.id)" :key="transaction.id">
               <td>{{ transaction.transactionDate }}</td>
               <td>{{ transaction.location.locationName }}</td>
               <td></td>
@@ -28,19 +28,15 @@
               <td class="amount" style="color: #ca4040;">-{{ transaction.total | toCurrency }}</td>
             </tr>
 
-            <tr :key="transaction.id">
-              <table id="expenses" class="table">
-                <thead>
-                  <tr>
+            <tr v-show="activeTransaction === transaction.id" :key="transaction.id">
                     <th>Date</th>
                     <th>Description</th>
                     <th>Revenue Type</th>
                     <th>Expense Type</th>
                     <th>Amount</th>
                   </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="expense in transaction.expenses" :key="expense.id">
+
+                  <tr v-show="activeTransaction === transaction.id" v-for="expense in transaction.expenses" :key="expense.id">
                     <td>{{ expense.transactionDate }}</td>
                     <td>
                       {{ expense.transactionDesc }}
@@ -54,9 +50,6 @@
                       style="color: #ca4040;"
                     >-{{ expense.transactionAmount | toCurrency }}</td>
                   </tr>
-                </tbody>
-              </table>
-            </tr>
           </template>
 
           <tr v-for="revenue in revenues" :key="revenue.id">
@@ -87,11 +80,17 @@ export default {
     expenses: [],
     revenues: [],
     transactions: [],
+    activeTransaction: null
   }),
   methods: {
     expenseDetail(expenseId) {
       this.$router.push("expenses/" + expenseId);
     },
+    toggle(id){
+      if (this.activeTransaction === id) {
+        this.activeTransaction = null;
+      } else {this.activeTransaction = id}
+    }
   },
   async mounted() {
     console.log("expenses mounted begin");

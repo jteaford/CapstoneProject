@@ -74,8 +74,8 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td class="table-total">Total: </td>
-                                <td> </td>
+                                <td class="table-total">Total:</td>
+                                <td class="projectTotal">{{ projectTotal | toCurrency }} </td>
                             </tr>
                         </tbody>
                     </table>
@@ -112,7 +112,8 @@ export default {
         project: null,
         statuses: [],
         expenses:[],
-        revenues: []
+        revenues: [],
+        projectTotal: null
     }),
     methods: {
         setStatus: function(projectId, event) {
@@ -122,6 +123,14 @@ export default {
       },
       selectStatus(){
         alert('Hello');
+      },
+      calculateProjectTotal() {
+          this.expenses.forEach((expense) => {
+           this.projectTotal -= expense.transactionAmount;   
+          })
+          this.revenues.forEach((revenue) => {
+           this.projectTotal += revenue.transactionAmount;   
+          })
       },
       async updateStatus(projectId, statusId){
             console.log("statusId = ", statusId);
@@ -146,6 +155,8 @@ export default {
         const revenues = await this.$http.get('http://localhost:8080/api/revenues/project/' + this.project.id);
         this.revenues = revenues.data;
         console.log('revenues mounted data', revenues);
+
+        this.calculateProjectTotal();
     }
 }
 </script>
@@ -289,6 +300,10 @@ border-top-color: #3273dc;
 
 #cam {
     color: #666666;
+}
+
+.projectTotal {
+    text-align: right;
 }
 
 /* #iphone11-main {

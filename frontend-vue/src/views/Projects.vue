@@ -29,7 +29,7 @@
               <td>{{ project.client.firstName }} {{ project.client.lastName }}</td>
               <td>  
                 <div v-if="!project.visible"><a @click.stop.prevent="selectStatus(project, $event)">{{ project.status.status }}</a></div>
-                <div v-else><select @change="setStatus(project.id, $event)" v-model="project.status.id" placeholder="Select Status Type">
+                <div v-else><select @change="setStatus(project, $event)" v-model="project.status.id" placeholder="Select Status Type">
                     <option v-for="status in statuses" :value="status.id" :key="status.id">
                         {{ status.status }}
                     </option>
@@ -52,27 +52,29 @@ export default {
     name: 'Projects',
     data: () => ({ 
       projects: [],
-      statuses: [] 
+      statuses: []
     }),
     methods: {
       projectDetail(projectId) {
           this.$router.push('project/' + projectId);
       },
-      setStatus: function(projectId, event) {
+      setStatus: function(project, event) {
         console.log(event.target.value);
-        console.log(projectId);
-        this.updateStatus(projectId, event.target.value);
+        console.log(project);
+        this.updateStatus(project, event.target.value);
       },
       selectStatus(project, event){
         console.log("Select status = ", project);
         project.visible = true;
         console.log(event);
       },
-      async updateStatus(projectId, statusId){
+      
+      async updateStatus(project, statusId){
             console.log("statusId = ", statusId);
             let status = {}; 
             status.id = statusId;
-            const response = await this.$http.patch('http://localhost:8080/api/projects/' + projectId, status);
+            const response = await this.$http.patch('http://localhost:8080/api/projects/' + project.id, status);
+            project.visible = false;
             console.log(response);
       }
     },
@@ -80,10 +82,11 @@ export default {
             console.log('projects mounted begin');
             const { data } = await this.$http.get('http://localhost:8080/api/projects');
             console.log('projects mounted data', data);
-            this.projects = data;
-            this.projects.forEach(element => {
+            
+            data.forEach(element => {
               element.visible = false;
             });
+            this.projects = data;
             const statuses = await this.$http.get('http://localhost:8080/api/statuses');
             console.log('statuses mounted data', statuses);
             this.statuses = statuses.data;

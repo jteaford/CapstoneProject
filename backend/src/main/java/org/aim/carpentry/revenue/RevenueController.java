@@ -1,5 +1,6 @@
 package org.aim.carpentry.revenue;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +40,8 @@ public class RevenueController {
     }
 
     @PostMapping(path = "/")
-    public @ResponseBody String createExpense(@RequestBody Revenue revenue) {
-        revenueRepository.save(revenue);
+    public @ResponseBody String createRevenue(@RequestBody List<Revenue> revenues) {
+        revenueRepository.saveAll(revenues);
         return "Saved";
     }
 

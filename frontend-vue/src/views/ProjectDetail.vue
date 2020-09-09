@@ -4,12 +4,15 @@
         <div class="flex-start"><h1 class="title">{{ project.projectCode }}</h1> <h2 class="subtitle is-size-4 has-text-weight-medium">{{ project.projectDescription }}</h2>
         
         <div class="status-bar">
-                    <a @click.stop.prevent="selectStatus()">{{ project.status.status }}</a>
-                    <select @change="setStatus(project.id, $event)" v-model="project.status.id" placeholder="Select Status Type">
-                        <option v-for="status in statuses" :value="status.id" :key="status.id">
-                            {{ status.status }}
-                        </option>
-                    </select>
+
+            <ProjectStatusDropdown :projectId="project.id" :currentStatus="project.status.id" :statuses="statuses" />
+
+            <a @click.stop.prevent="selectStatus()">{{ project.status.status }}</a>
+            <select @change="setStatus(project.id, $event)" v-model="project.status.id" placeholder="Select Status Type">
+                <option v-for="status in statuses" :value="status.id" :key="status.id">
+                    {{ status.status }}
+                </option>
+            </select>
         </div>
         </div>
         
@@ -107,11 +110,16 @@
 </template>
 
 <script>
+import ProjectStatusDropdown from '@/components/ProjectStatusDropdown.vue'
+
 export default {
+    components: {
+        ProjectStatusDropdown
+    },
     data: () => ({
         project: null,
         statuses: [],
-        expenses:[],
+        expenses: [],
         revenues: []
     }),
     methods: {
@@ -131,13 +139,14 @@ export default {
             console.log(response);
       }
     },
-    async mounted() {
-        const { data } = await this.$http.get('http://localhost:8080/api/projects/' + this.$route.params.id);
-        this.project = data;
-        
+    async beforeMount() {
         const statuses = await this.$http.get('http://localhost:8080/api/statuses');
         console.log('statuses mounted data', statuses);
         this.statuses = statuses.data;
+    },
+    async mounted() {
+        const { data } = await this.$http.get('http://localhost:8080/api/projects/' + this.$route.params.id);
+        this.project = data;
         
         const expenses = await this.$http.get('http://localhost:8080/api/expenses/project/' + this.project.id);
         this.expenses = expenses.data;

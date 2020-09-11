@@ -8,6 +8,8 @@
 
     <div class="content">
 
+      <Timer />
+
       <table class="table">
         
         <thead>
@@ -44,11 +46,13 @@
 
 <script>
 import ProjectStatusDropdown from '@/components/ProjectStatusDropdown.vue'
+import Timer from '@/components/timer/Timer.vue'
 
 export default {
     name: 'Projects',
     components: {
-        ProjectStatusDropdown
+        ProjectStatusDropdown,
+        Timer
     },
     data: () => ({ 
       projects: [],

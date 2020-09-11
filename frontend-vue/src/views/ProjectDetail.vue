@@ -5,7 +5,7 @@
         
         <div class="status-bar">
 
-            <ProjectStatusDropdown :projectId="project.id" :currentStatus="project.status.id" :statuses="statuses" />
+            <ProjectStatusDropdown :projectId="project.id" :currentStatus="project.status" :statuses="statuses" />
 
             <a @click.stop.prevent="selectStatus()">{{ project.status.status }}</a>
             <select @change="setStatus(project.id, $event)" v-model="project.status.id" placeholder="Select Status Type">

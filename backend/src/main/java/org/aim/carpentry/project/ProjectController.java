@@ -50,12 +50,13 @@ public class ProjectController {
     }
 
     @PatchMapping(path = "/{id}")
-    public @ResponseBody String updateProjectStatus(@PathVariable (value = "id") Integer id, @RequestBody Status status) {
+    public @ResponseBody Project updateProjectStatus(@PathVariable (value = "id") Integer id, @RequestBody Status status) {
         System.out.println("projectid = " + id);
         System.out.println("statusid = " + status.getId());
         projectRepository.updateStatus(id, status.getId());
 
-        return "Updated";
+        Optional<Project> project = projectRepository.findById(id);
+        return project.get();
     }
 
     @DeleteMapping(path = "/{id}")
